@@ -14,7 +14,7 @@ import it.uniroma3.spring.model.Amministratore;
 @EJB(name="ejb/AmministratoreFacade", beanInterface=AmministratoreFacade.class, beanName="AmministratoreFacade")
 public class AmministratoreFacade {
 
-	@PersistenceContext(unitName="galleria")
+	@PersistenceContext(unitName="uniroma3")
 	private EntityManager em;
 
 	public AmministratoreFacade(EntityManager em) {
