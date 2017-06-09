@@ -15,17 +15,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="utenti")
 @NamedQueries({
 	@NamedQuery(name = "Utente.findAll", query = "SELECT u FROM Utente u"),
 	@NamedQuery(name = "Utente.findByUsername", query = "SELECT u FROM Utente u WHERE u.username = :username"),
 	@NamedQuery(name = "Utente.findById", query="SELECT u FROM Utente u WHERE u.id = :id")
 })
 @Entity
+@Table(name="utenti")
 public class Utente {
 	
 	@Id

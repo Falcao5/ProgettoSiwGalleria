@@ -20,16 +20,18 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="autori")
 @NamedQueries({
 	@NamedQuery(name = "Autore.findAll", query = "SELECT a FROM Autore a"),
-	@NamedQuery(name="Autore.findById", query="SELECT a FROM Autore a WHERE a.id = :id")
-	@NamedQuery(name="Autore.findByNome", query="SELECT a FROM Autore a WHERE a.nome = :nome")
-	@NamedQuery(name="Autore.findByCognome", query="SELECT a FROM Autore a WHERE a.cognome = :cognome")
-	@NamedQuery(name="Autore.findByNazionalità", query="SELECT a FROM Autore a WHERE a.nazionalità = :nazionalità")
-	@NamedQuery(name="Autore.findByDataDiNascita", query="SELECT a FROM Autore a WHERE a.dataDiNascita = :dataDiNascita")
+	@NamedQuery(name="Autore.findById", query="SELECT a FROM Autore a WHERE a.id = :id"),
+	@NamedQuery(name="Autore.findByNome", query="SELECT a FROM Autore a WHERE a.nome = :nome"),
+	@NamedQuery(name="Autore.findByCognome", query="SELECT a FROM Autore a WHERE a.cognome = :cognome"),
+	@NamedQuery(name="Autore.findByNazionalità", query="SELECT a FROM Autore a WHERE a.nazionalità = :nazionalità"),
+	@NamedQuery(name="Autore.findByDataDiNascita", query="SELECT a FROM Autore a WHERE a.dataDiNascita = :dataDiNascita"),
 	@NamedQuery(name="Autore.findByDataDiMorte", query="SELECT a FROM Autore a WHERE a.dataDiMorte = :dataDiMorte")
 })
 public class Autore {
@@ -45,7 +47,7 @@ public class Autore {
 	private String cognome;
 	
 	@Column(nullable=true, length=200)
-	private String nazionalità;
+	private String nazionalita;
 
 	@Column(nullable=false)
 	@Temporal(TemporalType.DATE)
@@ -58,11 +60,6 @@ public class Autore {
 	@OneToMany(mappedBy="autore")
 	private List<Quadro> quadri;
 	
-	private String nome;
-	private String cognome;
-	private String nazionalita;
-	private Date dataDiNascita;
-	private Date dataDiMorte;
 	/**
 	 * @param nome
 	 * @param cognome
