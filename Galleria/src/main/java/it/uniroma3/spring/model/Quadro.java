@@ -10,11 +10,46 @@ package it.uniroma3.spring.model;
 
 import java.awt.Dimension;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="quadro")
+@NamedQueries({
+	@NamedQuery(name="Quadro.findAll", query="SELECT q FROM Quadro q"),
+	@NamedQuery(name="Quadro.findById", query="SELECT q FROM Quadro q WHERE q.id = :id")
+	@NamedQuery(name="Quadro.findByTitolo", query="SELECT q FROM Quadro q WHERE q.titolo = :titolo")
+	@NamedQuery(name="Quadro.findByAnno", query="SELECT q FROM Quadro q WHERE q.anno = :anno")
+})
+
 public class Quadro extends Opera{
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	
+	@Column
+	@ManyToOne
 	private String titolo;
+	
+	@Column
+	@ManyToOne
 	private Integer anno;
+	
+	@Column
+	@ManyToOne
 	private String tecnica;
+
+	@Column
+	@ManyToOne
 	private Dimension dimensioni;
 	
 	/**
@@ -88,4 +123,8 @@ public class Quadro extends Opera{
 		this.dimensioni = dimensioni;
 	}
 	
+	@Override
+	public String toString() {
+		return this.id + "";
+	}
 }
