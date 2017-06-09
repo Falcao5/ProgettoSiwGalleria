@@ -16,7 +16,7 @@ import it.uniroma3.spring.model.Opera;
 @EJB(name="ejb/QuadroFacade", beanInterface=QuadroFacade.class, beanName="QuadroFacade")
 public class QuadroFacade {
 
-	@PersistenceContext(unitName="galleria")
+	@PersistenceContext(unitName="uniroma3")
 	private EntityManager em;
 
 	public QuadroFacade(EntityManager em) {
