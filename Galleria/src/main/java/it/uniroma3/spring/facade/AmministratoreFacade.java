@@ -16,15 +16,8 @@ import it.uniroma3.spring.model.Amministratore;
 
 @Stateless
 @EJB(name="ejb/AmministratoreFacade", beanInterface=AmministratoreFacade.class, beanName="AmministratoreFacade")
-public class AmministratoreFacade {
+public class AmministratoreFacade extends AbstractFacade{
 
-	@PersistenceContext(unitName="uniroma3")
-	private EntityManager em;
-
-	public AmministratoreFacade(EntityManager em) {
-		this.em = em;
-	}
-	
 	public AmministratoreFacade(){
 		
 	}
@@ -37,24 +30,20 @@ public class AmministratoreFacade {
 		return a;
 	}
 	
-	public List<Amministratore> getAllAmministratore(){
-		return this.em.createNamedQuery("Amministratore.findByNome", Amministratore.class).getResultList();
+	/**
+	 * Cerca nel database un Amministraotre in base a un attributo. Questo attributo ha il tipo di o, e il nome dell'attributo è attributeName
+	 * @param o Oggetto in base al quale ricercare l'Amministratore
+	 * @param attribute String in base al quale ricercare l'Amministratore
+	 * @return	L'Amministratore trovato con il parametro attributeName
+	 * @return	null se non esistono Amministratore nel database con quell'attributeName
+	 */
+	public Amministratore getAmministratore(Object o, String attributeName){
+		return (Amministratore)this.getObjectFindByAttribute(o, attributeName);
 	}
-	
-	public Amministratore getAmministratore(Long id) {
-		try {
-			return this.em.createNamedQuery("Amministratore.findById", Amministratore.class).setParameter("id", id).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
-	
-	public Amministratore getAmministratore(String nome){
-		try {
-			return this.em.createNamedQuery("Amministratore.findByNome", Amministratore.class).setParameter("nome", nome).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
+
+	@Override
+	public Class<?> getThisClass() {
+		return this.getClass();
 	}
 	
 }

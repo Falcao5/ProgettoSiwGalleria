@@ -51,6 +51,13 @@ public class Quadro{
 	private Autore autore;
 	
 	/**
+	 * Constructor without parameters
+	 */
+	public Quadro(){
+		
+	}
+	
+	/**
 	 * @param autore
 	 * @param titolo
 	 * @param anno
