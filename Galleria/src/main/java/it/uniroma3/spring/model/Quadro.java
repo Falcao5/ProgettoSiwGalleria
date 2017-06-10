@@ -29,27 +29,26 @@ import javax.persistence.Table;
 	@NamedQuery(name="Quadro.findByAnno", query="SELECT q FROM Quadro q WHERE q.anno = :anno")
 })
 
-public class Quadro extends Opera{
+public class Quadro{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@Column
-	@ManyToOne
 	private String titolo;
 	
 	@Column
-	@ManyToOne
 	private Integer anno;
 	
 	@Column
-	@ManyToOne
 	private String tecnica;
 
 	@Column
-	@ManyToOne
 	private Dimension dimensioni;
+	
+	@ManyToOne
+	private Autore autore;
 	
 	/**
 	 * @param autore
@@ -58,12 +57,12 @@ public class Quadro extends Opera{
 	 * @param tecnica
 	 * @param dimensioni
 	 */
-	public Quadro(Autore autore, String titolo, Integer anno, String tecnica, Dimension dimensioni) {
-		super(autore);
+	public Quadro(String titolo, Integer anno, String tecnica, Dimension dimensioni, Autore autore) {
 		this.titolo = titolo;
 		this.anno = anno;
 		this.tecnica = tecnica;
 		this.dimensioni = dimensioni;
+		this.autore = autore;
 	}
 
 	/**
@@ -122,6 +121,20 @@ public class Quadro extends Opera{
 		this.dimensioni = dimensioni;
 	}
 	
+	/**
+	 * @return the autore
+	 */
+	public Autore getAutore() {
+		return autore;
+	}
+
+	/**
+	 * @param autore the autore to set
+	 */
+	public void setAutore(Autore autore) {
+		this.autore = autore;
+	}
+
 	@Override
 	public String toString() {
 		return this.id + "";
