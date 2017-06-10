@@ -1,6 +1,6 @@
 /**
  * 
- * @author falcao5
+ * @author Marte Valerio Falcone & Francesco Lauzi
  * @version 1.0
  * @category Persistence entities
  * 
