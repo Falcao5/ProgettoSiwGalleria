@@ -30,7 +30,7 @@ import javax.persistence.TemporalType;
 	@NamedQuery(name="Autore.findById", query="SELECT a FROM Autore a WHERE a.id = :id"),
 	@NamedQuery(name="Autore.findByNome", query="SELECT a FROM Autore a WHERE a.nome = :nome"),
 	@NamedQuery(name="Autore.findByCognome", query="SELECT a FROM Autore a WHERE a.cognome = :cognome"),
-	@NamedQuery(name="Autore.findByNazionalità", query="SELECT a FROM Autore a WHERE a.nazionalità = :nazionalità"),
+	@NamedQuery(name="Autore.findByNazionalità", query="SELECT a FROM Autore a WHERE a.nazionalita = :nazionalita"),
 	@NamedQuery(name="Autore.findByDataDiNascita", query="SELECT a FROM Autore a WHERE a.dataDiNascita = :dataDiNascita"),
 	@NamedQuery(name="Autore.findByDataDiMorte", query="SELECT a FROM Autore a WHERE a.dataDiMorte = :dataDiMorte")
 })
