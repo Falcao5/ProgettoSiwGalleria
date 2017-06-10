@@ -2,11 +2,8 @@ package it.uniroma3.spring.facade;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.persistence.NoResultException;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import it.uniroma3.spring.model.Autore;
