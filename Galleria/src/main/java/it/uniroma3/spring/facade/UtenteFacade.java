@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import it.uniroma3.spring.model.Amministratore;
 import it.uniroma3.spring.model.Utente;
 
 @Stateless

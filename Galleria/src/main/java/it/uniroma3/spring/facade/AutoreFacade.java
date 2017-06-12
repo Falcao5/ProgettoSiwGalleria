@@ -25,7 +25,7 @@ public class AutoreFacade extends AbstractFacade {
 	}
 
 	public Autore createAutore(String nome, String cognome, String nazionalita, Date dataDiNascita, Date dataDiMorte){
-		Autore a=new Autore();
+		Autore a= new Autore();
 		a.setNome(nome);
 		a.setCognome(cognome);
 		a.setNazionalita(nazionalita);
