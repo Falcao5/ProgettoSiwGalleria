@@ -1,0 +1,25 @@
+From 99dc2f09e4cff38c4920141791d336c697048630 Mon Sep 17 00:00:00 2001
+From: francescolauzi <francesco.lauzi@gmail.com>
+Date: Sat, 10 Jun 2017 17:26:54 +0200
+Subject: [PATCH] Create Autore.java
+
+---
+ Galleria/src/main/java/it/uniroma3/spring/model/Autore.java | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Galleria/src/main/java/it/uniroma3/spring/model/Autore.java b/Galleria/src/main/java/it/uniroma3/spring/model/Autore.java
+index b52b107..651f1cc 100644
+--- a/Galleria/src/main/java/it/uniroma3/spring/model/Autore.java
++++ b/Galleria/src/main/java/it/uniroma3/spring/model/Autore.java
+@@ -31,8 +31,6 @@ import javax.persistence.TemporalType;
+ 	@NamedQuery(name="Autore.findByNome", query="SELECT a FROM Autore a WHERE a.nome = :nome"),
+ 	@NamedQuery(name="Autore.findByCognome", query="SELECT a FROM Autore a WHERE a.cognome = :cognome"),
+ <<<<<<< HEAD
+-	@NamedQuery(name="Autore.findByNazionalita", query="SELECT a FROM Autore a WHERE a.nazionalita = :nazionalita"),
+-=======
+ 	@NamedQuery(name="Autore.findByNazionalità", query="SELECT a FROM Autore a WHERE a.nazionalita = :nazionalita"),
+ >>>>>>> Falcao5
+ 	@NamedQuery(name="Autore.findByDataDiNascita", query="SELECT a FROM Autore a WHERE a.dataDiNascita = :dataDiNascita"),
+-- 
+2.11.0.windows.1
+

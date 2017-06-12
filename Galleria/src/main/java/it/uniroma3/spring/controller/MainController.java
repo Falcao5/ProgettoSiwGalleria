@@ -8,7 +8,7 @@ public class MainController {
 	
 	@PostMapping("/login")
 	public String login(){
-		return "login";
+		return "cazzo";
 	}
 	
 	@PostMapping("/signup")
