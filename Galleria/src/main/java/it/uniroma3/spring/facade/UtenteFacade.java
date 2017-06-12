@@ -1,21 +1,24 @@
 package it.uniroma3.spring.facade;
 
-import java.util.Date;
+
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
 
 import it.uniroma3.spring.model.Utente;
 
 @Stateless
 @EJB(name="ejb/UtenteFacade", beanInterface=UtenteFacade.class, beanName="UtenteFacade")
 public class UtenteFacade extends AbstractFacade{
+	
 	public UtenteFacade(){
-		
+		super();
+	}
+	
+	public UtenteFacade(EntityManager em){
+		super(em);
 	}
 	
 	public Utente createUtente(String username, String password){
@@ -35,6 +38,15 @@ public class UtenteFacade extends AbstractFacade{
 	 */
 	public Utente getAmministratore(Object o, String attributeName){
 		return (Utente)this.getObjectFindByAttribute(o, attributeName);
+	}
+	
+	/**
+	 * @return La lista di tutti gli Utente presenti nel DB
+	 */
+	
+	@SuppressWarnings("unchecked")
+	public List<Utente> getAllUtente(){
+		return (List<Utente>)this.getAll();
 	}
 
 	@Override
