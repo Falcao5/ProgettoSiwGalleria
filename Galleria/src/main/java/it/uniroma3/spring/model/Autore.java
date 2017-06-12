@@ -76,13 +76,10 @@ public class Autore {
 		this.dataDiMorte = dataDiMorte;
 	}
 	
-<<<<<<< HEAD
 	public Autore(){
 		
 	}
 	
-=======
->>>>>>> Falcao5
 	/**
 	 * @return the nome
 	 */
