@@ -18,19 +18,12 @@ import it.uniroma3.spring.model.Autore;
 
 @Stateless
 @EJB(name="ejb/AutoreFacade", beanInterface=AutoreFacade.class, beanName="AutoreFacade")
-public class AutoreFacade {
+public class AutoreFacade extends AbstractFacade {
 
-	@PersistenceContext(unitName="uniroma3")
-	private EntityManager em;
-	
-	public AutoreFacade(EntityManager em) {
-		this.em = em;
-	}
-	
 	public AutoreFacade(){
-		
+
 	}
-	
+
 	public Autore createAutore(String nome, String cognome, String nazionalita, Date dataDiNascita, Date dataDiMorte){
 		Autore a=new Autore();
 		a.setNome(nome);
@@ -42,59 +35,57 @@ public class AutoreFacade {
 		return a;
 	}
 	
-	public List<Autore> getAllAutore(){
-		try{
-			return this.em.createNamedQuery("Autore.findAll", Autore.class).getResultList();
-		}catch (NoResultException error){
-			return null;
-		}
-	}
-	
-	public Autore getAutore(Long id) {
-		try {
-			return this.em.createNamedQuery("Autore.findById", Autore.class).setParameter("id", id).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
+	/**
+	 * Cerca nel database un Autore in base a un attributo. Questo attributo ha il tipo di o, e il nome dell'attributo è attribute 
+	 * @param o Oggetto in base al quale ricercare l'Autore
+	 * @param attribute String in base al quale ricercare l'Autore
+	 * @return	L'Autore trovato con il parametro attributo
+	 * @return	null se non esistono Autore nel database con quell'attribute
+	 */
+	public Autore getAutore(Object o, String attributeName){
+		return (Autore)getObjectFindByAttribute(o,attributeName);
 	}
 
-	public Autore getAutore(String nome) {
-		try {
-			return this.em.createNamedQuery("Autore.findByNome", Autore.class).setParameter("nome", nome).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
-
-	public Autore getAutore(String cognome) {
-		try {
-			return this.em.createNamedQuery("Autore.findByCognome", Autore.class).setParameter("cognome", cognome).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
-
-	public Autore getAutore(String string) {
-		try {
-			return this.em.createNamedQuery("Autore.findByNazionalità", Autore.class).setParameter("nazionalità", nazionalità).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
-
-	public Autore getAutore(Date dataDiNascita) {
-		try {
-			return this.em.createNamedQuery("Autore.findByDataDiNascita", Autore.class).setParameter("dataDiNascita", dataDiNascita).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
-
-	public Autore getAutore(Date dataDiMorte) {
-		try {
-			return this.em.createNamedQuery("Autore.findByDatadiMorte", Autore.class).setParameter("dataDiMorte", dataDiMorte).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
+	@Override
+	public Class<?> getThisClass() {
+		return this.getClass();
 	}
 }
+
+
+//	public List<Autore> getAllAutore(){
+//		try{
+//			return this.em.createNamedQuery("Autore.findAll", Autore.class).getResultList();
+//		}catch (NoResultException error){
+//			return null;
+//		}
+//	}
+//	/**
+//	 * @param o
+//	 * @param queryName
+//	 * @param byParameter
+//	 * @return l'Autore che ha l'Object o come attributo.
+//	 */
+//	public Autore getAutoreFindBy(Object o, String queryName, String byParameter){
+//		try {
+//			return this.em.createNamedQuery(queryName, Autore.class).setParameter(byParameter, o).getSingleResult();
+//		} catch (NoResultException e) {
+//			return null;
+//		}
+//	}
+//	
+//	/**
+//	 * Costruisce la query da passare al metodo getAutoreFindBy(...)
+//	 * @param o Oggetto in base al quale ricercare l'Autore
+//	 * @param attribute Attributo in base al quale ricercare l'Autore
+//	 * @return	L'autore trovato con il parametro attributo
+//	 * @return	null se l'autore non esiste in base all'attributo
+//	 */
+//	public Autore getAutoreFindByAttribute(Object o, String attribute) {
+//		String iniziale = attribute.substring(0, 1).toUpperCase();	// Primo carattere maiuscolo 	  (A)
+//		String finale = attribute.substring(1).toLowerCase();		// Nome dell'attributo minuscolo 	(ttributo)
+//		String queryName = "Autore.findBy" + iniziale + finale;		// String queryName = "Autore.findByAttributo"
+//		
+//		return getAutoreFindBy(o, queryName, attribute);
+//	}
+//	
