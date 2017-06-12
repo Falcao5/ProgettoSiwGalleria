@@ -19,6 +19,7 @@ public class AmministratoreFacadeTest {
 
 	}
 	
+	/* Utilizza la riflessione per invocare il metodo della classe. In questo modo possiamo lasciare privato il metodo. */
 	@Test
 	public void trovaNomeDiQuestaClasseTest() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException{
 		Method temp = null;
