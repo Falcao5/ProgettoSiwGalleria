@@ -11,8 +11,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
+
 
 import it.uniroma3.spring.model.Autore;
 
@@ -21,7 +20,11 @@ import it.uniroma3.spring.model.Autore;
 public class AutoreFacade extends AbstractFacade {
 
 	public AutoreFacade(){
-
+		super();
+	}
+	
+	public AutoreFacade(EntityManager em){
+		super(em);
 	}
 
 	public Autore createAutore(String nome, String cognome, String nazionalita, Date dataDiNascita, Date dataDiMorte){
@@ -44,6 +47,15 @@ public class AutoreFacade extends AbstractFacade {
 	 */
 	public Autore getAutore(Object o, String attributeName){
 		return (Autore)getObjectFindByAttribute(o,attributeName);
+	}
+	
+	/**
+	 * @return La lista di tutti gli Autore presenti nel DB
+	 */
+	
+	@SuppressWarnings("unchecked")
+	public List<Autore> getAllAutore(){
+		return (List<Autore>)this.getAll();
 	}
 
 	@Override
