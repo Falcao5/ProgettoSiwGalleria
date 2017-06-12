@@ -6,7 +6,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import it.uniroma3.spring.model.Autore;
+
 
 public abstract class AbstractFacade {
 	
@@ -15,6 +15,10 @@ public abstract class AbstractFacade {
 	
 	public AbstractFacade(){
 		
+	}
+	
+	public AbstractFacade(EntityManager em){
+		this.em = em;
 	}
 	
 	/**
@@ -30,7 +34,7 @@ public abstract class AbstractFacade {
 		String nomeClasse = trovaNomeDiQuestaClasse();
 		String queryName = nomeClasse + ".findBy" + iniziale + finale;		// String queryName = "Autore.findByAttributo"
 		
-		return getObjectFindBy(o, queryName, attribute);
+		return this.getObjectFindBy(o, queryName, attribute);
 	}
 	
 	/**
@@ -39,7 +43,7 @@ public abstract class AbstractFacade {
 	 * @return il nome della classe senza Facade finale
 	 */
 	private String trovaNomeDiQuestaClasse(){
-		String nomeIntero = this.getThisClass().getCanonicalName();	// Prendi il nome della classe
+		String nomeIntero = this.getThisClass().getSimpleName();	// Prendi il nome della classe
 		String result = "";											// Init
 		for(int i = 0; i<nomeIntero.length()+1 ; i++){				// Per ogni carattere del nome della classe
 			if(!nomeIntero.substring(i).equals("Facade")){			// Se il resto del nome della classe non è "Facade"
@@ -70,7 +74,7 @@ public abstract class AbstractFacade {
 	
 	public List<?> getAll(){
 		try{
-			return this.em.createNamedQuery(this.trovaNomeDiQuestaClasse() + ".findAll", Autore.class).getResultList();
+			return this.em.createNamedQuery(this.trovaNomeDiQuestaClasse() + ".findAll", getThisClass()).getResultList();
 		}catch (NoResultException error){
 			return null;
 		}
