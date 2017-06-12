@@ -1,24 +1,27 @@
 package it.uniroma3.spring.facade;
 
 import java.awt.Dimension;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
 
 import it.uniroma3.spring.model.Quadro;
-import it.uniroma3.spring.model.Amministratore;
+
 import it.uniroma3.spring.model.Autore;
 
 @Stateless
 @EJB(name="ejb/QuadroFacade", beanInterface=QuadroFacade.class, beanName="QuadroFacade")
 public class QuadroFacade extends AbstractFacade{
+
 	public QuadroFacade(){
-		
+		super();
+	}
+	
+	public QuadroFacade(EntityManager em){
+		super(em);
 	}
 	
 	public Quadro createQuadro(String titolo, Integer anno, String tecnica, Dimension dimensioni, Autore autoreDellOpera){
@@ -43,6 +46,15 @@ public class QuadroFacade extends AbstractFacade{
 		return (Quadro)this.getObjectFindByAttribute(o, attributeName);
 	}
 
+	/**
+	 * @return La lista di tutti i Quadro presenti nel DB
+	 */
+	
+	@SuppressWarnings("unchecked")
+	public List<Quadro> getAllQuadro(){
+		return (List<Quadro>)this.getAll();
+	}
+	
 	@Override
 	public Class<?> getThisClass() {
 		return this.getClass();
