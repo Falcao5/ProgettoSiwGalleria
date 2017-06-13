@@ -1,20 +1,11 @@
 package it.uniroma3.spring.facade;
 
-
-import java.util.List;
-
-import javax.persistence.EntityManager;
-
 import it.uniroma3.spring.model.Utente;
 
 public class UtenteFacade extends AbstractFacade<Utente>{
 	
 	public UtenteFacade(){
 		super();
-	}
-	
-	public UtenteFacade(EntityManager em){
-		super(em);
 	}
 	
 	public Utente createUtente(String username, String password){

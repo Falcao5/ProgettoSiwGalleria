@@ -2,8 +2,6 @@ package it.uniroma3.spring.facade;
 
 import java.awt.Dimension;
 
-import javax.persistence.EntityManager;
-
 import it.uniroma3.spring.model.Quadro;
 
 import it.uniroma3.spring.model.Autore;
@@ -13,10 +11,6 @@ public class QuadroFacade extends AbstractFacade<Quadro>{
 
 	public QuadroFacade(){
 		super();
-	}
-	
-	public QuadroFacade(EntityManager em){
-		super(em);
 	}
 	
 	public Quadro createQuadro(String titolo, Integer anno, String tecnica, Dimension dimensioni, Autore autoreDellOpera){
