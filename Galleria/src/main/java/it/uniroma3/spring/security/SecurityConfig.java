@@ -16,20 +16,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  
     @Autowired
     private DataSource dataSource;
- 
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    	auth
+    		.jdbcAuthentication()
+    			.dataSource(dataSource)
+    			.withDefaultSchema()
+    			.withUser("user").password("password").roles("USER").and()
+    			.withUser("admin").password("password").roles("USER", "ADMIN");
+    }
+    
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.jdbcAuthentication().dataSource(dataSource)
-		
+		auth.jdbcAuthentication()
+		.dataSource(dataSource)
 		.passwordEncoder(new BCryptPasswordEncoder())
 		.usersByUsernameQuery("SELECT username,password,1 FROM utenti where username=?")
-		.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
-		
-		auth.jdbcAuthentication().dataSource(dataSource)
-		
-		.passwordEncoder(new BCryptPasswordEncoder())
-		.usersByUsernameQuery("SELECT username,password,1 FROM amministratori where username=?")
 		.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
 		
 	}
