@@ -2,14 +2,17 @@ package it.uniroma3.spring.facade;
 
 import java.util.List;
 
-import javax.persistence.NoResultException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public abstract class AbstractFacade {
+import it.uniroma3.service.GalleriaService;
+
+public abstract class AbstractFacade<T> {
 	
-	@PersistenceContext(unitName="uniroma3")
+	@PersistenceContext(unitName="galleria")
 	protected EntityManager em;
+	
+	private GalleriaService<T> service = new GalleriaService<T>(this.em);
 	
 	public AbstractFacade(){
 		
@@ -20,19 +23,24 @@ public abstract class AbstractFacade {
 	}
 	
 	/**
-	 * Cerca nel database un Object in base a un attributo. Questo attributo ha il tipo di o, e il nome dell'attributo è attribute 
+	 * Cerca nel database un Object in base a un attributo. Questo attributo ha il tipo di o, e il nome dell'attributo è attributeName 
 	 * @param o Oggetto in base al quale ricercare l'Object
-	 * @param attribute String in base al quale ricercare l'Object
-	 * @return	L'Object trovato con il parametro attributo
-	 * @return	null se non esistono Object nel database con quell'attribute
+	 * @param nome dell'attributo in base al quale effettuare la ricerca
+	 * @return	L'oggetto x di tipo T, con il campo attributeName uguale all'oggetto o
+	 * @return	null se non esistono Object nel database con quell'attributeName
 	 */
-	protected Object getObjectFindByAttribute(Object o, String attribute) {
-		String iniziale = attribute.substring(0, 1).toUpperCase();			// Primo carattere maiuscolo 	  (A)
-		String finale = attribute.substring(1).toLowerCase();				// Nome dell'attributo minuscolo 	(ttributo)
-		String nomeClasse = trovaNomeDiQuestaClasse();
-		String queryName = nomeClasse + ".findBy" + iniziale + finale;		// String queryName = "Autore.findByAttributo"
-		
-		return this.getObjectFindBy(o, queryName, attribute);
+	public T getObjectFindByAttribute(Object o, String attributeName){
+		String className = this.trovaNomeDiQuestaClasse();
+		return this.service.getObjectFindByAttribute(o, attributeName, className, this.getThisClass());
+	}
+	
+	/**
+	 * 
+	 * @return la lista di tutti gli oggetti di tipo T
+	 */
+	public List<T> getAll(){
+		String className = trovaNomeDiQuestaClasse();
+		return this.service.getAll(className, this.getThisClass());
 	}
 	
 	/**
@@ -55,35 +63,11 @@ public abstract class AbstractFacade {
 	}
 	
 	/**
-	 * Restituisce l'Object trovato nel database in base all'attributo tipato o, e con nome dell'attributo byParameter
-	 * Metodo di supporto a getObjectFindByAttribute(...)
-	 * @param o
-	 * @param queryName
-	 * @param byParameter
-	 * @return l'Object che ha l'Object o come attributo.
-	 */
-	private Object getObjectFindBy(Object o, String queryName, String byParameter){
-		try {
-			return this.em.createNamedQuery(queryName, this.getThisClass()).setParameter(byParameter, o).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
-	
-	public List<?> getAll(){
-		try{
-			return this.em.createNamedQuery(this.trovaNomeDiQuestaClasse() + ".findAll", getThisClass()).getResultList();
-		}catch (NoResultException error){
-			return null;
-		}
-	}
-	
-	/**
 	 * 
 	 * @return l'oggetto Class della relativa sottoclasse
 	 */
 	abstract public Class<?> getThisClass();
-
+	
 	/**
 	 * @return the em
 	 */

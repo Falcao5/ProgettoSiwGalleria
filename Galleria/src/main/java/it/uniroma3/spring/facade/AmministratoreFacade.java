@@ -6,16 +6,12 @@ package it.uniroma3.spring.facade;
 
 import java.util.List;
 
-import javax.ejb.EJB;
-
 import javax.persistence.EntityManager;
-import javax.ejb.Stateless;
 
 import it.uniroma3.spring.model.Amministratore;
 
-@Stateless
-@EJB(name="ejb/AmministratoreFacade", beanInterface=AmministratoreFacade.class, beanName="AmministratoreFacade")
-public class AmministratoreFacade extends AbstractFacade{
+
+public class AmministratoreFacade extends AbstractFacade<Amministratore>{
 	
 	public AmministratoreFacade(){
 		super();
@@ -47,10 +43,8 @@ public class AmministratoreFacade extends AbstractFacade{
 	/**
 	 * @return La lista di tutti gli Amministratore presenti nel DB
 	 */
-	
-	@SuppressWarnings("unchecked")
 	public List<Amministratore> getAllAmministratore(){
-		return (List<Amministratore>)this.getAll();
+		return this.getAll();
 	}
 	
 	@Override

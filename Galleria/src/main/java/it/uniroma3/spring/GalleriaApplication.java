@@ -9,4 +9,6 @@ public class GalleriaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GalleriaApplication.class, args);
 	}
+	
+	
 }
