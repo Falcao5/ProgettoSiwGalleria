@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.spring.facade.QuadroFacade;
 import it.uniroma3.spring.model.Quadro;
 
+//So che ci sta qualcosa che non va, tipo il @Valid, mi deve essere sfuggito qualcosa da quello che ho letto. Domani vedo meglio
 @Controller
 public class QuadroController {
 	
@@ -28,7 +29,7 @@ public class QuadroController {
 	
 	//controlla se ci sono errori di validazione e in caso contrario aggiunge il quadro alla lista
   	@RequestMapping(value = "/create", method = RequestMethod.POST)
-  	public String create(@Valid Quadro quadrp, BindingResult result) {
+  	public String create(@Valid Quadro quadro, BindingResult result) {
     	if(result.hasErrors()){
       		return "/quadro/createQuadro";
     	}
