@@ -1,28 +1,18 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Progetto Galleria SIW 2016-2017</title>
+    <title>Homepage</title>
+    <meta charset="UTF-8" />
 </head>
 <body>
-
-	Benvenuto nella pagina della Galleria Lauzicone. Esegui il login per
-	entrare nella Galleria.
-
-	<form action="/login" method="post">
-		<table>
-			<tr>
-				<td><input type="submit" value="Login"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form action="/signup" method="post">
-		<table>
-			<tr>
-				<td><input type="submit" value="Registrati"></td>
-			</tr>
-		</table>
-	</form>
+	Benvenuto nella Galleria Lauzicone. Esegui il login<br>
+    <form action="/login" method="post">
+    	<input type="submit" value="Login" name="login"/>
+    </form>
+    Oppure registrati<br>
+    <form action="/signup" method="post">
+    	<input type="submit" value="Registrati" name="signup"/>
+    </form>
 </body>
 </html>
