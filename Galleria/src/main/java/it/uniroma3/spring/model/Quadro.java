@@ -20,19 +20,20 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="quadro")
-@NamedQueries({
-	@NamedQuery(name="Quadro.findAll", query="SELECT q FROM Quadro q"),
-	@NamedQuery(name="Quadro.findById", query="SELECT q FROM Quadro q WHERE q.id = :id"),
-	@NamedQuery(name="Quadro.findByTitolo", query="SELECT q FROM Quadro q WHERE q.titolo = :titolo"),
-	@NamedQuery(name="Quadro.findByAnno", query="SELECT q FROM Quadro q WHERE q.anno = :anno")
-})
+//@Table(name="quadri")
+//@NamedQueries({
+//	@NamedQuery(name="Quadro.findAll", query="SELECT q FROM Quadro q"),
+//	@NamedQuery(name="Quadro.findById", query="SELECT q FROM Quadro q WHERE q.id = :id"),
+//	@NamedQuery(name="Quadro.findByTitolo", query="SELECT q FROM Quadro q WHERE q.titolo = :titolo"),
+//	@NamedQuery(name="Quadro.findByAnno", query="SELECT q FROM Quadro q WHERE q.anno = :anno")
+//})
 
+
+@Entity
 public class Quadro{
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column

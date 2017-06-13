@@ -19,14 +19,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="amministratori")
-@NamedQueries({
-	@NamedQuery(name = "Amministratore.findByNome", query = "SELECT a FROM Amministratore a WHERE a.nome = :nome"),
-	@NamedQuery(name="Amministratore.findById", query="SELECT a FROM Amministratore a WHERE a.id = :id")
-})
+//@NamedQueries({
+//	@NamedQuery(name = "Amministratore.findByNome", query = "SELECT a FROM Amministratore a WHERE a.nome = :nome"),
+//	@NamedQuery(name="Amministratore.findById", query="SELECT a FROM Amministratore a WHERE a.id = :id")
+//})
 public class Amministratore {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable=false, unique=true)
