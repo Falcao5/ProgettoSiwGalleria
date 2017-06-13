@@ -4,16 +4,18 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class GalleriaService<T> {
+public class GalleriaService<T>{
 	
-	private EntityManager em;
+	@PersistenceContext(unitName="galleria")
+	protected EntityManager em;
 	
-	public GalleriaService(EntityManager em){
-		this.em=em;
+	public GalleriaService(){
+		
 	}
 	
 	/**
@@ -26,7 +28,7 @@ public class GalleriaService<T> {
 	public T getObjectFindByAttribute(Object o, String attributeName, String className, Class<?> c){
 		String iniziale = attributeName.substring(0, 1).toUpperCase();			// Primo carattere maiuscolo 	  (A)
 		String finale = attributeName.substring(1).toLowerCase();				// Nome dell'attributo minuscolo 	(ttributo)
-		String queryName = className + ".findBy" + iniziale + finale;		// String queryName = "Autore.findByAttributo"
+		String queryName = className + ".findBy" + iniziale + finale;			// String queryName = "Autore.findByAttributo"
 		
 		return (T)this.getObjectFindBy(o, queryName, attributeName, c);
 	}
@@ -48,7 +50,6 @@ public class GalleriaService<T> {
 		}
 	}
 	
-	
 	@SuppressWarnings("unchecked")
 	public List<T> getAll(String className, Class<?> c){
 
@@ -60,4 +61,17 @@ public class GalleriaService<T> {
 		
 	}
 	
+	/**
+	 * @return the em
+	 */
+	public EntityManager getEm() {
+		return em;
+	}
+
+	/**
+	 * @param em the em to set
+	 */
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 }
