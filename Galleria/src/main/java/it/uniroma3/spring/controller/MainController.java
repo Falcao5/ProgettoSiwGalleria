@@ -27,16 +27,23 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/registraUtente", method=RequestMethod.POST)
-	public String registraUtente(@RequestParam("username") String username, 
-			@RequestParam("password") String password){
+	public String registraUtente(	@RequestParam("username") String username, 
+									@RequestParam("password") String password
+								){
+		
+		AmministratoreFacade af = new AmministratoreFacade();
+		if(username.equals("admin") && af.getObjectFindByAttribute("admin", "username")==null) // Se lo username inserito è admin e non esiste nel db un Amministratore con username "admin"
+			return registraAmministratore(username,password);
+		
 		UtenteFacade uf = new UtenteFacade();
 		uf.createUtente(username, password);
 		return "login";
 	}
 	
 	@RequestMapping(value="/registraAmministratore", method=RequestMethod.POST)
-	public String registraAmministratore(@RequestParam("username") String username, 
-			@RequestParam("password") String password){
+	public String registraAmministratore(	@RequestParam("username") String username, 
+											@RequestParam("password") String password
+										){
 		AmministratoreFacade af = new AmministratoreFacade();
 		af.createAmministratore(username, password);
 		return "login";
