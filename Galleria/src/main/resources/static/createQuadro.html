@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Aggiungi un quadro</title>
+</head>
+<body>
+<form:form commandName="quadro" method="post" action="create">
+  <fieldset>
+    <legend>Aggiungi un quadro</legend>
+    <p>
+      <form:label for="titolo" path="titolo">Titolo</form:label><br/>
+      <form:input path="titolo" /> <form:errors path="titolo" />			
+    </p>
+    <p>	
+      <form:label for="dimensioni" path="dimensioni">Dimensioni</form:label><br/>
+      <form:input path="dimensioni" /> <form:errors path="dimensioni" />
+    </p>
+    <p>	
+      <form:label for="anno" path="anno">Anno</form:label><br/>
+      <form:input path="anno" /> <form:errors path="anno" />
+    </p><p>	
+      <form:label for="tecnica" path="tecnica">Tecnica</form:label><br/>
+      <form:input path="tecnica" /> <form:errors path="tecnica" />
+    </p><p>	
+      <form:label for="autore" path="autore">Autore</form:label><br/>
+      <form:input path="autore" /> <form:errors path="autore" />
+    </p>    
+    <p>	
+      <input type="submit" value="Crea Quadro" />
+    </p>
+  </fieldset>
+</form:form>
+</body>
+</html>
