@@ -3,23 +3,17 @@ package it.uniroma3.spring.facade;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import it.uniroma3.service.GalleriaService;
 
 public abstract class AbstractFacade<T> {
 	
-	@PersistenceContext(unitName="galleria")
+	private GalleriaService<T> service = new GalleriaService<T>();
+	
 	protected EntityManager em;
 	
-	private GalleriaService<T> service = new GalleriaService<T>(this.em);
-	
 	public AbstractFacade(){
-		
-	}
-	
-	public AbstractFacade(EntityManager em){
-		this.em = em;
+		this.em = this.service.getEm();
 	}
 	
 	/**
