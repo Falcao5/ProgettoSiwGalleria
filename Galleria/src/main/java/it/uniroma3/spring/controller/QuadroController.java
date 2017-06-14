@@ -23,25 +23,25 @@ public class QuadroController {
 	//Mostra la pagina di creazione 
   	@RequestMapping(value = "/createQuadro", method = RequestMethod.GET)
   	public String welcome(Model model) {
-    model.addAttribute("quadro",new Quadro());
-    return "/quadro/createQuadro";
+    		model.addAttribute("quadro",new Quadro());
+    		return "/quadro/createQuadro";
   	}
 	
 	//controlla se ci sono errori di validazione e in caso contrario aggiunge il quadro alla lista
   	@RequestMapping(value = "/create", method = RequestMethod.POST)
   	public String create(@Valid Quadro quadro, BindingResult result) {
-    	if(result.hasErrors()){
-      		return "/quadro/createQuadro";
-    	}
-    	quadriList.add(quadro);
-    	return "redirect:getview";
+    		if(result.hasErrors()){
+      			return "/quadro/createQuadro";
+    		}
+    		quadriList.add(quadro);
+    		return "redirect:getview";
   	}
 	
 	//mostra la lista dei quadri
   	@RequestMapping(value = "/getview")
   	public String view(Model model) {
-    	model.addAttribute("quadriList", quadriList);
-    	return "/quadro/viewQuadro";
+    		model.addAttribute("quadriList", quadriList);
+    		return "/quadro/viewQuadro";
   	}
 	
 	
