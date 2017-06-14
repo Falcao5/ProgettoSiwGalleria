@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
 <title>Login</title>
 </head>
+
 <body>
 	<form action="/processaDatiLogin" method="post">
 		<table>
-
 			<tr>
-				<td><input type="text" value="Username" name="username"/></td>
+				<td><input type="text" value="Username" name="username"/> <div th:if="${param.error}">Errore</div></td>
 			</tr>
 
 			<tr>
-				<td><input type="password" value="Password" name="password"/></td>
+				<td><input type="password" value="Password" name="password"/> <div th:if="${param.error}">Errore</div></td>
 			</tr>
 
 			<tr>
 				<td><input type="submit" value="LogIn!"/></td>
 			</tr>
-
+			
 		</table>
 	</form>
+
+	<!--  TODO TODO TODO  --> messaggioDiErrore <!--  ERRORE DI AUTENTICAZIONE  -->
 </body>
 </html>

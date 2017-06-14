@@ -24,7 +24,7 @@ import javax.persistence.Table;
 })
 */
 @Entity
-@Table(name="utenti")
+@Table(name="users")
 public class Utente {
 	
 	@Id
@@ -36,6 +36,10 @@ public class Utente {
 	
 	@Column(nullable=false)
 	private String password;
+	
+	/* Colonna necessaria a Spring Security */
+	@Column(nullable=false)		
+	private boolean enabled;
 	
 	public Utente(){
 		
