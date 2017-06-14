@@ -47,14 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	
     	http
-    		.csrf().disable()
+    		
         	.authorizeRequests()
             .anyRequest().authenticated()
             .and()
             .formLogin()
-            .loginPage("/login")
+            .loginPage("/login")			// Non è necessario specificare la failurePage. Di default la pagina di failure è /login?error
             .defaultSuccessUrl("/index")
-            .failureUrl("/login?error")
             .permitAll();
     	
 //        http

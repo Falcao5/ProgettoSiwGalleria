@@ -10,7 +10,9 @@
 				<legend>Login richiesto: </legend>
 
 				<div th:if="${param.error}" class="alert alert-error">
-					<h1>Username o password non validi</h1></div>
+					<h1>Username o password non validi</h1></div>		<!-- 	**************** IMPORTANTE ********************
+																				NON INDICARE SE E' SBAGLIATO USERNAME O PASSWORD, 
+																				RENDE IL SISTEMA PIU' VULNERABILE 					-->
 
 				<div th:if="${param.logout}" class="alert alert-success">
 				Hai eseguito con successo il logout</div>
