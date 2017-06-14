@@ -1,8 +1,13 @@
 package it.uniroma3.spring.controller;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +33,7 @@ public class QuadroController {
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge il quadro alla lista
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@Valid Quadro quadrp, BindingResult result) {
+    public String create(@Valid Quadro quadro, BindingResult result) {
       if(result.hasErrors()){
           return "/quadro/createQuadro";
       }
