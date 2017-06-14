@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Aggiungi un autore</title>
+</head>
+<body>
+<form:form commandName="autore" method="post" action="create">
+  <fieldset>
+    <legend>Aggiungi un autore</legend>
+    <p>
+      <form:label for="nome" path="nome">Nome</form:label><br/>
+      <form:input path="nome" /> <form:errors path="nome" />			
+    </p>
+    <p>	
+      <form:label for="cognome" path="cognome">Cognome</form:label><br/>
+      <form:input path="cognome" /> <form:errors path="cognome" />
+    </p>
+    <p>	
+      <form:label for="nazionalità" path="nazionalità">Nazionalità</form:label><br/>
+      <form:input path="nazionalità" /> <form:errors path="nazionalità" />
+    </p><p>	
+      <form:label for="dataDiNascita" path="dataDiNascita">DataDiNascita</form:label><br/>
+      <form:input path="dataDiNascita" /> <form:errors path="dataDiNascita" />
+    </p><p>	
+      <form:label for="dataDiMorte" path="dataDiMorte">DataDiMorte</form:label><br/>
+      <form:input path="dataDiMorte" /> <form:errors path="dataDiMorte" />
+    </p>    
+    <p>	
+      <input type="submit" value="Crea Autore" />
+    </p>
+  </fieldset>
+</form:form>
+</body>
+</html>

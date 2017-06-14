@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Aggiungi un amministratore</title>
+</head>
+<body>
+<form:form commandName="amministratore" method="post" action="create">
+  <fieldset>
+    <legend>Aggiungi un amministratore</legend>
+    <p>
+      <form:label for="nome" path="nome">Nome</form:label><br/>
+      <form:input path="nome" /> <form:errors path="nome" />			
+    </p>
+    <p>	
+      <form:label for="password" path="password">Password</form:label><br/>
+      <form:input path="password" /> <form:errors path="password" />
+    </p>
+    <p>	
+      <input type="submit" value="Crea amministratore" />
+    </p>
+  </fieldset>
+</form:form>
+</body>
+</html>

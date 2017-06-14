@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Aggiungi un utente</title>
+</head>
+<body>
+<form:form commandName="utente" method="post" action="create">
+  <fieldset>
+    <legend>Aggiungi un utente</legend>
+    <p>
+      <form:label for="username" path="username">Username</form:label><br/>
+      <form:input path="username" /> <form:errors path="username" />			
+    </p>
+    <p>	
+      <form:label for="password" path="password">Password</form:label><br/>
+      <form:input path="password" /> <form:errors path="password" />
+    </p>
+    <p> 
+      <form:label for="enable" path="enable">Enable</form:label><br/>
+      <form:input path="enable" /> <form:errors path="enable" />
+    </p>
+    <p>	
+      <input type="submit" value="Crea utente" />
+    </p>
+  </fieldset>
+</form:form>
+</body>
+</html>
