@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lista dei quadri</title>
+</head>
+<body>
+<p>
+  <a href="createQuadro">Inserisci un altro quadro</a>
+</p>
+<fieldset>
+<legend>Quadri inseriti</legend>
+<c:forEach items="${quadriList}" var="quadro">
+  Titolo: <c:out value="${quadro.titolo}" /><br/><br/>
+  Autore: <c:out value="${quadro.autore}" /><br/><br/>
+  Anno: <c:out value="${quadro.anno}" /><br/><br/>
+  Dimensioni: <c:out value="${quadro.dimensioni}" /><br/><br/>
+  Tecnica: <c:out value="${quadro.tecnica}" /><br/><br/>
+  <hr/>
+</c:forEach>
+</fieldset>
+
+</body>
+</html>

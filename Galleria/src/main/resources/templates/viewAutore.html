@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lista dei autori</title>
+</head>
+<body>
+<p>
+  <a href="createAutore">Inserisci un altro autore</a>
+</p>
+<fieldset>
+<legend>Autori inseriti</legend>
+<c:forEach items="${autoriList}" var="autore">
+  Nome: <c:out value="${autore.nome}" /><br/><br/>
+  Cognome: <c:out value="${autore.cognome}" /><br/><br/>
+  Nazionalità: <c:out value="${autore.nazionalità}" /><br/><br/>
+  DataDiNascita: <c:out value="${autore.dataDiNascita}" /><br/><br/>
+  DataDiMorte: <c:out value="${autore.dataDiMorte}" /><br/><br/>
+  <hr/>
+</c:forEach>
+</fieldset>
+
+</body>
+</html>
