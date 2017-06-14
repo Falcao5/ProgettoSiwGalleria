@@ -2,7 +2,7 @@
 <mvc:annotation-driven  />
 
 <!-- CONTROLLER -->
-<bean class="it.mrwebmaster.mvc.BookController" scope="session"/>
+<bean class="it.mrwebmaster.mvc.QuadroController" scope="session"/>
 
 <!-- VIEW RESOLVER -->
 <bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
