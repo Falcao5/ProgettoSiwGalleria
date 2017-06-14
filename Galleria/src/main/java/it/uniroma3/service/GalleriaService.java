@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class GalleriaService<T>{
 	
 	@PersistenceContext(unitName="galleria")
-	protected EntityManager em;
+	public EntityManager em;
 	
 	public GalleriaService(){
 		

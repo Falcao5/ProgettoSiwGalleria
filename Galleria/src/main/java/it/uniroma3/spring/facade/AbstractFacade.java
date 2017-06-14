@@ -8,11 +8,12 @@ import it.uniroma3.service.GalleriaService;
 
 public abstract class AbstractFacade<T> {
 	
-	private GalleriaService<T> service = new GalleriaService<T>();
+	private GalleriaService<T> service;
 	
-	protected EntityManager em;
+	public EntityManager em;
 	
 	public AbstractFacade(){
+		this.service = new GalleriaService<T>();
 		this.em = this.service.getEm();
 	}
 	
@@ -74,5 +75,19 @@ public abstract class AbstractFacade<T> {
 	 */
 	public void setEm(EntityManager em) {
 		this.em = em;
+	}
+
+	/**
+	 * @return the service
+	 */
+	public GalleriaService<T> getService() {
+		return service;
+	}
+
+	/**
+	 * @param service the service to set
+	 */
+	public void setService(GalleriaService<T> service) {
+		this.service = service;
 	}
 }

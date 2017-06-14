@@ -33,11 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.
-		jdbcAuthentication().dataSource(dataSource)
-		.passwordEncoder(new BCryptPasswordEncoder());
-//		.usersByUsernameQuery("SELECT username,password,1 FROM users where username=?")
-//		.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
+		auth
+			.jdbcAuthentication().dataSource(dataSource)
+			.passwordEncoder(new BCryptPasswordEncoder())
+			.usersByUsernameQuery("SELECT username,password,1 FROM users where username=?")
+			.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
 
 	}
 
@@ -53,8 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		            	.permitAll()
 		            .and()
 		            	.authorizeRequests()
-		            	.antMatchers("/signup").permitAll()
-		            	.anyRequest().authenticated();
+		            	.antMatchers("/protected").authenticated()	// protected è TODO
+		            	.anyRequest().permitAll();
 	}
 
 	@Bean 

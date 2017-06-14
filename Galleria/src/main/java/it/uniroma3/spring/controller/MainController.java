@@ -4,9 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import it.uniroma3.spring.facade.AmministratoreFacade;
 import it.uniroma3.spring.facade.UtenteFacade;
+import it.uniroma3.spring.model.Amministratore;
+import it.uniroma3.spring.model.Utente;
 
 @Controller
 public class MainController {
@@ -27,7 +30,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/registraUtente", method=RequestMethod.POST)
-	public String registraUtente(	@RequestParam("username") String username, 
+	public ModelAndView registraUtente(	@RequestParam("username") String username, 
 									@RequestParam("password") String password
 								){
 		
@@ -36,17 +39,25 @@ public class MainController {
 			return registraAmministratore(username,password);
 		
 		UtenteFacade uf = new UtenteFacade();
-		uf.createUtente(username, password);
-		return "login";
+		Utente u = uf.createUtente(username, password);
+		
+		ModelAndView maw = new ModelAndView("registrato");
+		maw.getModel().put("user", u);
+		
+		return new ModelAndView("registrato");
 	}
 	
 	@RequestMapping(value="/registraAmministratore", method=RequestMethod.POST)
-	public String registraAmministratore(	@RequestParam("username") String username, 
+	public ModelAndView registraAmministratore(	@RequestParam("username") String username, 
 											@RequestParam("password") String password
 										){
 		AmministratoreFacade af = new AmministratoreFacade();
-		af.createAmministratore(username, password);
-		return "login";
+		Amministratore a = af.createAmministratore(username, password);
+		
+		ModelAndView maw = new ModelAndView("registrato");
+		maw.getModel().put("admin", a);
+		
+		return maw;
 	}
 	
 }
