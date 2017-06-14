@@ -19,7 +19,7 @@ public class QuadroFacade extends AbstractFacade<Quadro>{
 		q.setAnno(anno);
 		q.setTecnica(tecnica);
 		q.setDimensioni(dimensioni);
-		q.setAutore(autoreDellOpera);
+//		q.setAutore(autoreDellOpera);
 		this.em.persist(q);
 		return q;
 	}

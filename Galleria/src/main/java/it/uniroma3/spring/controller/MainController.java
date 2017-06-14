@@ -11,6 +11,11 @@ import it.uniroma3.spring.facade.UtenteFacade;
 @Controller
 public class MainController {
 	
+	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    public String goHome() {
+        return "index";
+    }
+	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login(){
 		return "login";
@@ -19,11 +24,6 @@ public class MainController {
 	@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public String signup(){
 		return "registrati";
-	}
-	
-	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String goHome(){
-		return "index";
 	}
 	
 	@RequestMapping(value="/registraUtente", method=RequestMethod.POST)

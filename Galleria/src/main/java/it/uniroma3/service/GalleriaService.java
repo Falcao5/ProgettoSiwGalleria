@@ -18,6 +18,19 @@ public class GalleriaService<T>{
 		
 	}
 	
+	private String primaLetteraToUpperCase(String stringa){
+		String primaLettera = stringa.substring(0, 1).toUpperCase();	// Primo carattere maiuscolo 	  (S)
+		String resto = stringa.substring(1);						// Nome dell'attributo minuscolo 	(tringa)
+		return primaLettera + resto;
+	}
+	
+	private String queryBuilder(String attributeName, String className){
+		// String queryName = "ClassName.findByAttributoName"
+		String queryName = primaLetteraToUpperCase(className) + ".findBy" + primaLetteraToUpperCase(attributeName);
+		
+		return queryName;
+	}
+	
 	/**
 	 * Cerca nel database un Object in base a un attributo. Questo attributo ha il tipo di o, e il nome dell'attributo è attributeName 
 	 * @param o Oggetto in base al quale ricercare l'Object
@@ -26,10 +39,7 @@ public class GalleriaService<T>{
 	 * @return	null se non esistono Object nel database con quell'attributeName
 	 */
 	public T getObjectFindByAttribute(Object o, String attributeName, String className, Class<?> c){
-		String iniziale = attributeName.substring(0, 1).toUpperCase();			// Primo carattere maiuscolo 	  (A)
-		String finale = attributeName.substring(1).toLowerCase();				// Nome dell'attributo minuscolo 	(ttributo)
-		String queryName = className + ".findBy" + iniziale + finale;			// String queryName = "Autore.findByAttributo"
-		
+		String queryName = queryBuilder(attributeName, className);
 		return (T)this.getObjectFindBy(o, queryName, attributeName, c);
 	}
 	

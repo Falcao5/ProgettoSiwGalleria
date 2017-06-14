@@ -16,13 +16,13 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-/*
+
 @NamedQueries({
 	@NamedQuery(name = "Utente.findAll", query = "SELECT u FROM Utente u"),
 	@NamedQuery(name = "Utente.findByUsername", query = "SELECT u FROM Utente u WHERE u.username = :username"),
 	@NamedQuery(name = "Utente.findById", query="SELECT u FROM Utente u WHERE u.id = :id")
 })
-*/
+
 @Entity
 @Table(name="users")
 public class Utente {

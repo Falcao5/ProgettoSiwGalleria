@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,7 +30,7 @@ import javax.persistence.Table;
 //	@NamedQuery(name="Quadro.findByAnno", query="SELECT q FROM Quadro q WHERE q.anno = :anno")
 //})
 
-
+@Table(name="quadri")
 @Entity
 public class Quadro{
 	
@@ -48,8 +50,9 @@ public class Quadro{
 	@Column
 	private Dimension dimensioni;
 	
-	@ManyToOne
-	private Autore autore;
+//	@ManyToOne
+//	@JoinColumn
+//	private Autore autore;
 	
 	/**
 	 * Constructor without parameters
@@ -70,7 +73,7 @@ public class Quadro{
 		this.anno = anno;
 		this.tecnica = tecnica;
 		this.dimensioni = dimensioni;
-		this.autore = autore;
+//		this.autore = autore;
 	}
 
 	/**
@@ -132,16 +135,16 @@ public class Quadro{
 	/**
 	 * @return the autore
 	 */
-	public Autore getAutore() {
-		return autore;
-	}
+//	public Autore getAutore() {
+//		return autore;
+//	}
 
 	/**
 	 * @param autore the autore to set
 	 */
-	public void setAutore(Autore autore) {
-		this.autore = autore;
-	}
+//	public void setAutore(Autore autore) {
+//		this.autore = autore;
+//	}
 
 	@Override
 	public String toString() {

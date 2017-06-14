@@ -10,5 +10,4 @@ public class GalleriaApplication {
 		SpringApplication.run(GalleriaApplication.class, args);
 	}
 	
-	
 }
