@@ -40,23 +40,28 @@ public class Autore {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="AUTORE_ID")
 	private Long id;
 	
-	@Column(nullable=false, length=100)
-	private String titolo;
+	@Column(nullable=false, length=50)
+	private String nome;
 	
-	@Column(nullable=false)
-	private Integer anno;
+	@Column(nullable=false, length=50)
+	private String cognome;
 	
-	@Column(nullable=false, length=200)
-	private String tecnica;
+	@Column(nullable=true, length=200)
+	private String nazionalita;
 
 	@Column(nullable=false)
-	private Dimension dimensioni;
+	@Temporal(TemporalType.DATE)
+	private Date dataDiNascita;
+
+	@Column(nullable=false)
+	@Temporal(TemporalType.DATE)
+	private Date dataDiMorte;
 	
-	@ManyToOne
-	@JoinColumn(name="AUTORE_ID")
-	private Autore autore;
+	@OneToMany(mappedBy="autore")
+	private List<Quadro> quadri;
 	
 	/**
 	 * @param nome
