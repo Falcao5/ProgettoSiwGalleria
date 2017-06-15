@@ -23,12 +23,12 @@ public class AmministratoreController {
   //Mostra la pagina di creazione 
     @RequestMapping(value = "/createAmministratore", method = RequestMethod.GET)
     public String welcome(Model model) {
-      model.addAttribute("amministratore",new Amministratore());
+      model.addAttribute("amministratore", new Amministratore());
       return "/amministratore/createAmministratore";
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge l'amministratore alla lista
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/createAmministratore", method = RequestMethod.POST)
     public String create(@Valid Amministratore amministratore, BindingResult result) {
       if(result.hasErrors()){
           return "/amministratore/createAmministratore";

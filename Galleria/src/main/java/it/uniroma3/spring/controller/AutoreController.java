@@ -28,7 +28,7 @@ public class AutoreController {
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge l'autore alla lista
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/createAutore", method = RequestMethod.POST)
     public String create(@Valid Autore autore, BindingResult result) {
       if(result.hasErrors()){
           return "/autore/createAutore";

@@ -32,7 +32,7 @@ public class QuadroController {
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge il quadro alla lista
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/createQuadro", method = RequestMethod.POST)
     public String create(@Valid Quadro quadro, BindingResult result) {
       if(result.hasErrors()){
           return "/quadro/createQuadro";

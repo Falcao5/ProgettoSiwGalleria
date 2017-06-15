@@ -28,7 +28,7 @@ public class UtenteController {
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge l'utente alla lista
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/createUtente", method = RequestMethod.POST)
     public String create(@Valid Utente utente, BindingResult result) {
       if(result.hasErrors()){
           return "/utente/createUtente";
