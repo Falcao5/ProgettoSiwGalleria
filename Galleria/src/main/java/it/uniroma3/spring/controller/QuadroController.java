@@ -45,7 +45,7 @@ public class QuadroController {
     @RequestMapping(value = "/getviewQuadro")
     public String view(Model model) {
       model.addAttribute("quadriList", quadriList);
-      return "/quadro/viewQuadro";
+      return "/viewQuadro";
     }
   
   

@@ -41,7 +41,7 @@ public class AutoreController {
     @RequestMapping(value = "/getViewAutore")
     public String view(Model model) {
       model.addAttribute("autoriList", autoriList);
-      return "/autore/viewAutore";
+      return "/viewAutore";
     }
   
   
