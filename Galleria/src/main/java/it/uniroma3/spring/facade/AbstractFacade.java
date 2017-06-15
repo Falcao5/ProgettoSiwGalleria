@@ -3,12 +3,13 @@ package it.uniroma3.spring.facade;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import it.uniroma3.service.GalleriaService;
 
 public abstract class AbstractFacade<T> {
 	
-	private GalleriaService<T> service;
+	
 	
 	public EntityManager em;
 	

@@ -28,17 +28,17 @@ public class QuadroController {
     @RequestMapping(value = "/createQuadro", method = RequestMethod.GET)
     public String welcome(Model model) {
       model.addAttribute("quadro",new Quadro());
-      return "/quadro/createQuadro";
+      return "/createQuadro";
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge il quadro alla lista
     @RequestMapping(value = "/createQuadro", method = RequestMethod.POST)
     public String create(@Valid Quadro quadro, BindingResult result) {
       if(result.hasErrors()){
-          return "/quadro/createQuadro";
+          return "/createQuadro";
       }
       quadriList.add(quadro);
-      return "redirect:getview";
+      return "redirect:getViewQuadro";
     }
   
   //mostra la lista dei quadri

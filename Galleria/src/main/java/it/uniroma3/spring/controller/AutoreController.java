@@ -24,17 +24,17 @@ public class AutoreController {
     @RequestMapping(value = "/createAutore", method = RequestMethod.GET)
     public String welcome(Model model) {
       model.addAttribute("autore",new Autore());
-      return "/autore/createAutore";
+      return "/createAutore";
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge l'autore alla lista
     @RequestMapping(value = "/createAutore", method = RequestMethod.POST)
     public String create(@Valid Autore autore, BindingResult result) {
       if(result.hasErrors()){
-          return "/autore/createAutore";
+          return "/createAutore";
       }
       autoriList.add(autore);
-      return "redirect:getview";
+      return "/viewAutore";
     }
   
   //mostra la lista dei autori
@@ -43,6 +43,5 @@ public class AutoreController {
       model.addAttribute("autoriList", autoriList);
       return "/viewAutore";
     }
-  
   
 }

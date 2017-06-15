@@ -30,7 +30,7 @@ public class Amministratore {
 	private Long id;
 	
 	@Column(nullable=false, unique=true)
-	private String nome;
+	private String username;
 	
 	@Column(nullable=false)
 	private String password;
@@ -48,11 +48,11 @@ public class Amministratore {
 	}
 
 	public String getNome() {
-		return nome;
+		return username;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
