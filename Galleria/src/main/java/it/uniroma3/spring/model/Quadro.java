@@ -38,21 +38,21 @@ public class Quadro{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
+	@Column(nullable=false, length=100)
 	private String titolo;
 	
-	@Column
+	@Column(nullable=false)
 	private Integer anno;
 	
-	@Column
+	@Column(nullable=false, length=200)
 	private String tecnica;
 
-	@Column
+	@Column(nullable=false)
 	private Dimension dimensioni;
 	
-//	@ManyToOne
-//	@JoinColumn
-//	private Autore autore;
+	@ManyToOne
+	@JoinColumn(name="AUTORE_ID")
+	private Autore autore;
 	
 	/**
 	 * Constructor without parameters
