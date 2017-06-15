@@ -38,7 +38,7 @@ public class AutoreController {
     }
   
   //mostra la lista dei autori
-    @RequestMapping(value = "/getview")
+    @RequestMapping(value = "/getViewAutore")
     public String view(Model model) {
       model.addAttribute("autoriList", autoriList);
       return "/autore/viewAutore";

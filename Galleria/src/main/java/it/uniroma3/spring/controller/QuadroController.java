@@ -42,7 +42,7 @@ public class QuadroController {
     }
   
   //mostra la lista dei quadri
-    @RequestMapping(value = "/getview")
+    @RequestMapping(value = "/getviewQuadro")
     public String view(Model model) {
       model.addAttribute("quadriList", quadriList);
       return "/quadro/viewQuadro";
