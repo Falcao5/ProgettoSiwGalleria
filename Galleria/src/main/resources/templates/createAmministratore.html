@@ -10,15 +10,17 @@
   <fieldset>
     <legend>Aggiungi un amministratore</legend>
     <p>
-      <form:label for="nome" path="nome">Nome</form:label><br/>
-      <form:input path="nome" /> <form:errors path="nome" />			
+      <td>Nome:</td>
+      <td><input type="text" th:field="*{nome}" /></td>
+      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
     </p>
-    <p>	
-      <form:label for="password" path="password">Password</form:label><br/>
-      <form:input path="password" /> <form:errors path="password" />
+    <p>
+      <td>Password:</td>
+      <td><input type="text" th:field="*{password}" /></td>
+      <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
     </p>
-    <p>	
-      <input type="submit" value="Crea amministratore" />
+    <p>  
+      <input type="submit" value="Inserisci amministratore" />
     </p>
   </fieldset>
 </form:form>
