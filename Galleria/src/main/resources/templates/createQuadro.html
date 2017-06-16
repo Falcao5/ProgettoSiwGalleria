@@ -8,26 +8,31 @@
 <form:form commandName="quadro" method="post" action="/createQuadro">
   <fieldset>
     <legend>Aggiungi un quadro</legend>
-    <p>
-      <form:label for="titolo" path="titolo">Titolo</form:label><br/>
-      <form:input path="titolo" /> <form:errors path="titolo" />			
+   <p>
+      <td>Titolo:</td>
+      <td><input type="text" th:field="*{titolo}" /></td>
+      <td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></td>			
     </p>
     <p>	
-      <form:label for="dimensioni" path="dimensioni">Dimensioni</form:label><br/>
-      <form:input path="dimensioni" /> <form:errors path="dimensioni" />
+      <td>Anno:</td>
+      <td><input type="text" th:field="*{anno}" /></td>
+      <td th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></td>
     </p>
     <p>	
-      <form:label for="anno" path="anno">Anno</form:label><br/>
-      <form:input path="anno" /> <form:errors path="anno" />
+      <td>Tecnica:</td>
+      <td><input type="text" th:field="*{tecnica}" /></td>
+      <td th:if="${#fields.hasErrors('tecnica')}" th:errors="*{tecnica}"></td>
     </p><p>	
-      <form:label for="tecnica" path="tecnica">Tecnica</form:label><br/>
-      <form:input path="tecnica" /> <form:errors path="tecnica" />
+      <td>Dimensioni:</td>
+      <td><input type="text" th:field="*{dimensioni}" /></td>
+      <td th:if="${#fields.hasErrors('dimensioni')}" th:errors="*{dimensioni}"></td>
     </p><p>	
-      <form:label for="autore" path="autore">Autore</form:label><br/>
-      <form:input path="autore" /> <form:errors path="autore" />
+      <td>Autore:</td>
+      <td><input type="text" th:field="*{autore}" /></td>
+      <td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
     </p>    
     <p>	
-      <input type="submit" value="Crea Quadro" />
+      <input type="submit" value="Inserisci Quadro" />
     </p>
   </fieldset>
 </form:form>
