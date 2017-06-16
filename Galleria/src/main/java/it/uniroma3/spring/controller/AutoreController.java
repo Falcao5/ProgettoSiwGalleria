@@ -24,7 +24,7 @@ public class AutoreController {
     @RequestMapping(value = "/createAutore", method = RequestMethod.GET)
     public String welcome(Model model) {
       model.addAttribute("autore",new Autore());
-      return "/acreateAutore";
+      return "/createAutore";
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge l'autore alla lista
