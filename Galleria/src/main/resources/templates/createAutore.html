@@ -9,25 +9,30 @@
   <fieldset>
     <legend>Aggiungi un autore</legend>
     <p>
-      <form:label for="nome" path="nome">Nome</form:label><br/>
-      <form:input path="nome" /> <form:errors path="nome" />			
+      <td>Nome:</td>
+      <td><input type="text" th:field="*{nome}" /></td>
+      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>	
     </p>
     <p>	
-      <form:label for="cognome" path="cognome">Cognome</form:label><br/>
-      <form:input path="cognome" /> <form:errors path="cognome" />
+      <td>Cognome:</td>
+      <td><input type="text" th:field="*{cognome}" /></td>
+      <td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
     </p>
     <p>	
-      <form:label for="nazionalità" path="nazionalità">Nazionalità</form:label><br/>
-      <form:input path="nazionalità" /> <form:errors path="nazionalità" />
+      <td>Nazionalità:</td>
+      <td><input type="text" th:field="*{nazionalità}" /></td>
+      <td th:if="${#fields.hasErrors('nazionalità')}" th:errors="*{nazionalità}"></td>
     </p><p>	
-      <form:label for="dataDiNascita" path="dataDiNascita">DataDiNascita</form:label><br/>
-      <form:input path="dataDiNascita" /> <form:errors path="dataDiNascita" />
+      <td>Data di Nascita:</td>
+      <td><input type="text" th:field="*{dataDiNascita}" /></td>
+      <td th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></td>
     </p><p>	
-      <form:label for="dataDiMorte" path="dataDiMorte">DataDiMorte</form:label><br/>
-      <form:input path="dataDiMorte" /> <form:errors path="dataDiMorte" />
+      <td>Data di Morte:</td>
+      <td><input type="text" th:field="*{dataDiMorte}" /></td>
+      <td th:if="${#fields.hasErrors('dataDiMorte')}" th:errors="*{dataDiMorte}"></td>
     </p>    
     <p>	
-      <input type="submit" value="Crea Autore" />
+      <input type="submit" value="Inserisci Autore" />
     </p>
   </fieldset>
 </form:form>
