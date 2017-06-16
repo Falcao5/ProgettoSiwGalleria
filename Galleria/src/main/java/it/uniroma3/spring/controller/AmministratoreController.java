@@ -29,19 +29,19 @@ public class AmministratoreController {
     @RequestMapping(value = "/createAmministratore", method = RequestMethod.GET)
     public String welcome(Model model) {
       model.addAttribute("amministratore", new Amministratore());
-      return "/amministratore/createAmministratore";
+      return "/createAmministratore";
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge l'amministratore alla lista
     @RequestMapping(value = "/createAmministratore", method = RequestMethod.POST)
     public String create(@Valid Amministratore amministratore, BindingResult result) {
       if(result.hasErrors()){
-          return "/amministratore/createAmministratore";
+          return "/createAmministratore";
       }
       
       this.service.add(amministratore);
       
-      return "/amministratore/viewAmministratore";
+      return "/viewAmministratore";
     }
   
   
