@@ -28,18 +28,18 @@ public class UtenteController {
     @RequestMapping(value = "/createUtente", method = RequestMethod.GET)
     public String welcome(Model model) {
       model.addAttribute("utente",new Utente());
-      return "/utente/createUtente";
+      return "/createUtente";
     }
   
   //controlla se ci sono errori di validazione e in caso contrario aggiunge l'utente alla lista
     @RequestMapping(value = "/createUtente", method = RequestMethod.POST)
     public String create(@Valid Utente utente, BindingResult result) {
       if(result.hasErrors()){
-          return "/utente/createUtente";
+          return "/createUtente";
       }
       
       this.service.add(utente);
-      return "/utente/viewUtente";
+      return "/viewUtente";
     }
     
     
