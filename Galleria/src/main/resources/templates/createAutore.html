@@ -1,38 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.springframework.org/tags/form">
+<html xmlns:form="http://www.springframework.org/tags" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Aggiungi un autore</title>
 </head>
 <body>
-<form:form commandName="autore" method="post" action="/createAutore">
+<form:form commandName="autore" method="post" action="create">
   <fieldset>
     <legend>Aggiungi un autore</legend>
-    <p>
-      <td>Nome:</td>
+    <table>
+    <tr>
+      <td><label for="nome">Nome:</label></td>
       <td><input type="text" th:field="*{nome}" /></td>
-      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>	
-    </p>
-    <p>	
-      <td>Cognome:</td>
+      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>  
+    </tr>
+    <tr>  
+      <td><label for="cognome">Cognome:</label></td>
       <td><input type="text" th:field="*{cognome}" /></td>
       <td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
-    </p>
-    <p>	
-      <td>Nazionalità:</td>
+    </tr>
+    <tr>
+      <td><label for="nazionalità">Nazionalità:</label></td>
       <td><input type="text" th:field="*{nazionalità}" /></td>
       <td th:if="${#fields.hasErrors('nazionalità')}" th:errors="*{nazionalità}"></td>
-    </p><p>	
-      <td>Data di Nascita:</td>
+    </tr>
+    <tr>
+      <td><label for="dataDiNascita">Data Di Nascita:</label></td>
       <td><input type="text" th:field="*{dataDiNascita}" /></td>
       <td th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></td>
-    </p><p>	
-      <td>Data di Morte:</td>
+    </tr>
+    <tr>
+      <td><label for="dataDiMorte">Data Di Morte:</label></td>
       <td><input type="text" th:field="*{dataDiMorte}" /></td>
       <td th:if="${#fields.hasErrors('dataDiMorte')}" th:errors="*{dataDiMorte}"></td>
-    </p>    
-    <p>	
-      <input type="submit" value="Inserisci Autore" />
+    </tr>    
+    </table>
+    <p> 
+      <input type="submit" value="Inserisci Autore"/>
     </p>
   </fieldset>
 </form:form>
