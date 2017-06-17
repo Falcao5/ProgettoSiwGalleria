@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html xmlns:form="http://www.springframework.org/"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -27,5 +28,33 @@
 	</form:form>
 
 	<a href="/index"> <img src="/img/Homepage.png" /></a>
+=======
+<html xmlns:form="http://www.springframework.org/tags" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Aggiungi un utente</title>
+</head>
+<body>
+<form:form commandName="utente" method="post" action="create">
+  <fieldset>
+    <legend>Aggiungi un utente</legend>
+    <table>
+    <tr>
+      <td><label for="username">Username:</label></td>
+      <td><input type="text" th:field="*{username}" /></td>
+      <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></td>
+    </tr>
+    <tr>
+      <td><label for="password">Password:</label></td>
+      <td><input type="text" th:field="*{password}" /></td>
+      <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+    </tr>
+    </table>
+    <p>	
+      <input type="submit" value="Inserisci Utente" />
+    </p>
+  </fieldset>
+</form:form>
+>>>>>>> 1199b40487a6ef01c9dc76bbf789f6808d481967
 </body>
 </html>

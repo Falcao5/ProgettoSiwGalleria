@@ -1,11 +1,16 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:th="http://www.thymeleaf.org">
+=======
+<html xmlns:form="http://www.springframework.org/tags" xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 1199b40487a6ef01c9dc76bbf789f6808d481967
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Aggiungi un autore</title>
 </head>
 <body>
+<<<<<<< HEAD
 	<form:form commandName="autore" method="post" action="/createAutore">
 		<fieldset>
 			<legend>Aggiungi un autore</legend>
@@ -46,5 +51,42 @@
 		</fieldset>
 	</form:form>
 	<a href="/index"> <img src="/img/Homepage.png" /></a>
+=======
+<form:form commandName="autore" method="post" action="create">
+  <fieldset>
+    <legend>Aggiungi un autore</legend>
+    <table>
+    <tr>
+      <td><label for="nome">Nome:</label></td>
+      <td><input type="text" th:field="*{nome}" /></td>
+      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>  
+    </tr>
+    <tr>  
+      <td><label for="cognome">Cognome:</label></td>
+      <td><input type="text" th:field="*{cognome}" /></td>
+      <td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
+    </tr>
+    <tr>
+      <td><label for="nazionalità">Nazionalità:</label></td>
+      <td><input type="text" th:field="*{nazionalità}" /></td>
+      <td th:if="${#fields.hasErrors('nazionalità')}" th:errors="*{nazionalità}"></td>
+    </tr>
+    <tr>
+      <td><label for="dataDiNascita">Data Di Nascita:</label></td>
+      <td><input type="text" th:field="*{dataDiNascita}" /></td>
+      <td th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></td>
+    </tr>
+    <tr>
+      <td><label for="dataDiMorte">Data Di Morte:</label></td>
+      <td><input type="text" th:field="*{dataDiMorte}" /></td>
+      <td th:if="${#fields.hasErrors('dataDiMorte')}" th:errors="*{dataDiMorte}"></td>
+    </tr>    
+    </table>
+    <p> 
+      <input type="submit" value="Inserisci Autore"/>
+    </p>
+  </fieldset>
+</form:form>
+>>>>>>> 1199b40487a6ef01c9dc76bbf789f6808d481967
 </body>
 </html>

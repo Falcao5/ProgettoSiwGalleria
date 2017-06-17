@@ -1,25 +1,271 @@
-From 99dc2f09e4cff38c4920141791d336c697048630 Mon Sep 17 00:00:00 2001
-From: francescolauzi <francesco.lauzi@gmail.com>
-Date: Sat, 10 Jun 2017 17:26:54 +0200
-Subject: [PATCH] Create Autore.java
-
----
- Galleria/src/main/java/it/uniroma3/spring/model/Autore.java | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/Galleria/src/main/java/it/uniroma3/spring/model/Autore.java b/Galleria/src/main/java/it/uniroma3/spring/model/Autore.java
-index b52b107..651f1cc 100644
---- a/Galleria/src/main/java/it/uniroma3/spring/model/Autore.java
-+++ b/Galleria/src/main/java/it/uniroma3/spring/model/Autore.java
-@@ -31,8 +31,6 @@ import javax.persistence.TemporalType;
- 	@NamedQuery(name="Autore.findByNome", query="SELECT a FROM Autore a WHERE a.nome = :nome"),
- 	@NamedQuery(name="Autore.findByCognome", query="SELECT a FROM Autore a WHERE a.cognome = :cognome"),
- <<<<<<< HEAD
--	@NamedQuery(name="Autore.findByNazionalita", query="SELECT a FROM Autore a WHERE a.nazionalita = :nazionalita"),
--=======
- 	@NamedQuery(name="Autore.findByNazionalità", query="SELECT a FROM Autore a WHERE a.nazionalita = :nazionalita"),
- >>>>>>> Falcao5
- 	@NamedQuery(name="Autore.findByDataDiNascita", query="SELECT a FROM Autore a WHERE a.dataDiNascita = :dataDiNascita"),
--- 
-2.11.0.windows.1
-
+diff --git a/Galleria/src/main/java/it/uniroma3/spring/controller/IndexController.java b/Galleria/src/main/java/it/uniroma3/spring/controller/IndexController.java
+new file mode 100644
+index 0000000..1714cb0
+--- /dev/null
++++ b/Galleria/src/main/java/it/uniroma3/spring/controller/IndexController.java
+@@ -0,0 +1,14 @@
++package it.uniroma3.spring.controller;
++
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RequestMethod;
++
++@Controller
++public class IndexController {
++  
++  @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
++    public String goHome() {
++        return "index";
++    }
++}
+diff --git a/Galleria/src/main/java/it/uniroma3/spring/controller/LoginController.java b/Galleria/src/main/java/it/uniroma3/spring/controller/LoginController.java
+new file mode 100644
+index 0000000..a6c80fa
+--- /dev/null
++++ b/Galleria/src/main/java/it/uniroma3/spring/controller/LoginController.java
+@@ -0,0 +1,14 @@
++package it.uniroma3.spring.controller;
++
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RequestMethod;
++ 
++@Controller
++public class LoginController {
++  
++  @RequestMapping(value="/login", method=RequestMethod.GET)
++  public String login(){
++    return "login";
++  }
++}
+diff --git a/Galleria/src/main/java/it/uniroma3/spring/controller/RegistratiController.java b/Galleria/src/main/java/it/uniroma3/spring/controller/RegistratiController.java
+new file mode 100644
+index 0000000..c960425
+--- /dev/null
++++ b/Galleria/src/main/java/it/uniroma3/spring/controller/RegistratiController.java
+@@ -0,0 +1,14 @@
++package it.uniroma3.spring.controller;
++
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RequestMethod;
++
++@Controller
++public class RegistratiController {
++  
++  @RequestMapping(value="/signup", method=RequestMethod.GET)
++  public String signup(){
++    return "registrati";
++  }
++}
+diff --git a/Galleria/src/main/resources/templates/createAmministratore.html b/Galleria/src/main/resources/templates/createAmministratore.html
+index cbe70d5..f57b57f 100644
+--- a/Galleria/src/main/resources/templates/createAmministratore.html
++++ b/Galleria/src/main/resources/templates/createAmministratore.html
+@@ -1,6 +1,7 @@
+ <!DOCTYPE html>
+-<html xmlns:form="http://www.springframework.org/tags/form">
++<html xmlns:form="http://www.springframework.org/tags" xmlns:th="http://www.thymeleaf.org">
+ <head>
++<<<<<<< HEAD
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <title>Aggiungi un amministratore</title>
+ </head>
+@@ -27,5 +28,31 @@
+ 	</form:form>
+ 
+ 	<a href="/index"> <img src="/img/Homepage.png" /></a>
++=======
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++<title>Aggiungi un amministratore</title>
++</head>
++<body>
++<form:form commandName="amministratore" method="post" action="create">
++  <fieldset>
++    <legend>Aggiungi un amministratore</legend>
++    <table>
++    <tr>
++      <td><label for="nome">Nome:</label></td>
++      <td><input type="text" th:field="*{nome}" /></td>
++      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
++    </tr>
++    <tr>
++      <td><label for="password">Password:</label></td>
++      <td><input type="text" th:field="*{password}" /></td>
++      <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
++    </tr>
++    </table>
++    <p>  
++      <input type="submit" value="Inserisci Amministratore" />
++    </p>
++  </fieldset>
++</form:form>
++>>>>>>> 1199b40487a6ef01c9dc76bbf789f6808d481967
+ </body>
+ </html>
+diff --git a/Galleria/src/main/resources/templates/createAutore.html b/Galleria/src/main/resources/templates/createAutore.html
+index 7f7d7fc..a5466a3 100644
+--- a/Galleria/src/main/resources/templates/createAutore.html
++++ b/Galleria/src/main/resources/templates/createAutore.html
+@@ -1,11 +1,16 @@
+ <!DOCTYPE html>
++<<<<<<< HEAD
+ <html xmlns:form="http://www.springframework.org/tags/form"
+ 	xmlns:th="http://www.thymeleaf.org">
++=======
++<html xmlns:form="http://www.springframework.org/tags" xmlns:th="http://www.thymeleaf.org">
++>>>>>>> 1199b40487a6ef01c9dc76bbf789f6808d481967
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <title>Aggiungi un autore</title>
+ </head>
+ <body>
++<<<<<<< HEAD
+ 	<form:form commandName="autore" method="post" action="/createAutore">
+ 		<fieldset>
+ 			<legend>Aggiungi un autore</legend>
+@@ -46,5 +51,42 @@
+ 		</fieldset>
+ 	</form:form>
+ 	<a href="/index"> <img src="/img/Homepage.png" /></a>
++=======
++<form:form commandName="autore" method="post" action="create">
++  <fieldset>
++    <legend>Aggiungi un autore</legend>
++    <table>
++    <tr>
++      <td><label for="nome">Nome:</label></td>
++      <td><input type="text" th:field="*{nome}" /></td>
++      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>  
++    </tr>
++    <tr>  
++      <td><label for="cognome">Cognome:</label></td>
++      <td><input type="text" th:field="*{cognome}" /></td>
++      <td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
++    </tr>
++    <tr>
++      <td><label for="nazionalità">Nazionalità:</label></td>
++      <td><input type="text" th:field="*{nazionalità}" /></td>
++      <td th:if="${#fields.hasErrors('nazionalità')}" th:errors="*{nazionalità}"></td>
++    </tr>
++    <tr>
++      <td><label for="dataDiNascita">Data Di Nascita:</label></td>
++      <td><input type="text" th:field="*{dataDiNascita}" /></td>
++      <td th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></td>
++    </tr>
++    <tr>
++      <td><label for="dataDiMorte">Data Di Morte:</label></td>
++      <td><input type="text" th:field="*{dataDiMorte}" /></td>
++      <td th:if="${#fields.hasErrors('dataDiMorte')}" th:errors="*{dataDiMorte}"></td>
++    </tr>    
++    </table>
++    <p> 
++      <input type="submit" value="Inserisci Autore"/>
++    </p>
++  </fieldset>
++</form:form>
++>>>>>>> 1199b40487a6ef01c9dc76bbf789f6808d481967
+ </body>
+ </html>
+diff --git a/Galleria/src/main/resources/templates/createQuadro.html b/Galleria/src/main/resources/templates/createQuadro.html
+index f9e47c5..9d5bd65 100644
+--- a/Galleria/src/main/resources/templates/createQuadro.html
++++ b/Galleria/src/main/resources/templates/createQuadro.html
+@@ -1,4 +1,5 @@
+ <!DOCTYPE html>
++<<<<<<< HEAD
+ <html xmlns:form="http://www.springframework.org/tags/form"
+ 	xmlns:th="http://www.thymeleaf.org">
+ <head>
+@@ -46,5 +47,46 @@
+ 		</fieldset>
+ 	</form:form>
+ 	<a href="/index"> <img src="/img/Homepage.png" /></a>
++=======
++<html xmlns:form="http://www.springframework.org/tags" xmlns:th="http://www.thymeleaf.org">
++<head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++<title>Aggiungi un quadro</title>
++</head>
++<body>
++<form:form commandName="quadro" method="post" action="create">
++  <fieldset>
++    <legend>Aggiungi un quadro</legend>
++    <table>
++    <tr>
++      <td><label for="titolo">Titolo:</label></td>
++      <td><input type="text" th:field="*{titolo}" /></td>
++      <td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></td>
++    </tr>
++    <tr>	
++      <td><label for="anno">Anno:</label></td>
++      <td><input type="text" th:field="*{anno}" /></td>
++      <td th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></td>
++    </tr>
++    <tr>	
++      <td><label for="tecnica">Tecnica:</label></td>
++      <td><input type="text" th:field="*{tecnica}" /></td>
++      <td th:if="${#fields.hasErrors('tecnica')}" th:errors="*{tecnica}"></td>
++    </tr><tr>	
++      <td><label for="dimensioni">Dimensioni:</label></td>
++      <td><input type="text" th:field="*{dimensioni}" /></td>
++      <td th:if="${#fields.hasErrors('dimensioni')}" th:errors="*{dimensioni}"></td>
++    </tr><tr>	
++      <td><label for="autore">Autore:</label></td>
++      <td><input type="text" th:field="*{autore}" /></td>
++      <td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
++    </tr> 
++    </table>   
++    <p>	
++      <input type="submit" value="Inserisci Quadro" />
++    </p>
++  </fieldset>
++</form:form>
++>>>>>>> 1199b40487a6ef01c9dc76bbf789f6808d481967
+ </body>
+ </html>
+diff --git a/Galleria/src/main/resources/templates/createUtente.html b/Galleria/src/main/resources/templates/createUtente.html
+index 28ad94b..56732a1 100644
+--- a/Galleria/src/main/resources/templates/createUtente.html
++++ b/Galleria/src/main/resources/templates/createUtente.html
+@@ -1,4 +1,5 @@
+ <!DOCTYPE html>
++<<<<<<< HEAD
+ <html xmlns:form="http://www.springframework.org/"
+ 	xmlns:th="http://www.thymeleaf.org">
+ <head>
+@@ -27,5 +28,33 @@
+ 	</form:form>
+ 
+ 	<a href="/index"> <img src="/img/Homepage.png" /></a>
++=======
++<html xmlns:form="http://www.springframework.org/tags" xmlns:th="http://www.thymeleaf.org">
++<head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++<title>Aggiungi un utente</title>
++</head>
++<body>
++<form:form commandName="utente" method="post" action="create">
++  <fieldset>
++    <legend>Aggiungi un utente</legend>
++    <table>
++    <tr>
++      <td><label for="username">Username:</label></td>
++      <td><input type="text" th:field="*{username}" /></td>
++      <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></td>
++    </tr>
++    <tr>
++      <td><label for="password">Password:</label></td>
++      <td><input type="text" th:field="*{password}" /></td>
++      <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
++    </tr>
++    </table>
++    <p>	
++      <input type="submit" value="Inserisci Utente" />
++    </p>
++  </fieldset>
++</form:form>
++>>>>>>> 1199b40487a6ef01c9dc76bbf789f6808d481967
+ </body>
+ </html>
+\ No newline at end of file
