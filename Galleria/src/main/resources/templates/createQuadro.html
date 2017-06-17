@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.springframework.org/tags/form">
+<html xmlns:form="http://www.springframework.org/tags" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Aggiungi un quadro</title>
 </head>
 <body>
-<form:form commandName="quadro" method="post" action="/createQuadro">
+<form:form commandName="quadro" method="post" action="create">
   <fieldset>
     <legend>Aggiungi un quadro</legend>
-   <p>
-      <td>Titolo:</td>
+    <table>
+    <tr>
+      <td><label for="titolo">Titolo:</label></td>
       <td><input type="text" th:field="*{titolo}" /></td>
-      <td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></td>			
-    </p>
-    <p>	
-      <td>Anno:</td>
+      <td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></td>
+    </tr>
+    <tr>	
+      <td><label for="anno">Anno:</label></td>
       <td><input type="text" th:field="*{anno}" /></td>
       <td th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></td>
-    </p>
-    <p>	
-      <td>Tecnica:</td>
+    </tr>
+    <tr>	
+      <td><label for="tecnica">Tecnica:</label></td>
       <td><input type="text" th:field="*{tecnica}" /></td>
       <td th:if="${#fields.hasErrors('tecnica')}" th:errors="*{tecnica}"></td>
-    </p><p>	
-      <td>Dimensioni:</td>
+    </tr><tr>	
+      <td><label for="dimensioni">Dimensioni:</label></td>
       <td><input type="text" th:field="*{dimensioni}" /></td>
       <td th:if="${#fields.hasErrors('dimensioni')}" th:errors="*{dimensioni}"></td>
-    </p><p>	
-      <td>Autore:</td>
+    </tr><tr>	
+      <td><label for="autore">Autore:</label></td>
       <td><input type="text" th:field="*{autore}" /></td>
       <td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
-    </p>    
+    </tr> 
+    </table>   
     <p>	
       <input type="submit" value="Inserisci Quadro" />
     </p>
