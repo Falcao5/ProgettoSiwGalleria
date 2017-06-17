@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -18,6 +19,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
+
+	public SecurityConfig() {
+		super();
+	}
 
 	//    @Autowired
 	//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -30,36 +35,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	//    	
 	//    }
 
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
+
 		auth
-			.jdbcAuthentication().dataSource(dataSource)
-			.passwordEncoder(new BCryptPasswordEncoder())
-			.usersByUsernameQuery("SELECT username,password,1 FROM users where username=?")
-			.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
+		.jdbcAuthentication().dataSource(dataSource)
+		.usersByUsernameQuery("SELECT username,password,1 FROM users where username=?")
+		.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
 
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
-		        http
-		        		.csrf().disable()
-		            	.formLogin().loginPage("/login").successForwardUrl("/autenticato")
-		            	.permitAll()
-		            .and()
-		            	.logout()
-		            	.permitAll()
-		            .and()
-		            	.authorizeRequests()
-		            	.antMatchers("/autenticato").authenticated()	// protected è TODO
-		            	.anyRequest().permitAll();
+
+		http
+		.csrf().disable()
+		.formLogin().loginPage("/login").defaultSuccessUrl("/autenticato").successForwardUrl("/autenticato")
+		.permitAll()
+		.and()
+		.logout()
+		.permitAll()
+		.and()
+		.authorizeRequests()
+		.antMatchers("/autenticato").authenticated()
+		.anyRequest().permitAll();
 	}
 
-	@Bean 
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
+	//	@Bean
+	//	@Override
+	//	public AuthenticationManager authenticationManagerBean() throws Exception {
+	//		return super.authenticationManagerBean();
+	//	}
 }

@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.springframework.org/tags/form">
+<html xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Aggiungi un autore</title>
 </head>
 <body>
-<form:form commandName="autore" method="post" action="/createAutore">
-  <fieldset>
-    <legend>Aggiungi un autore</legend>
-    <p>
-      <td>Nome:</td>
-      <td><input type="text" th:field="*{nome}" /></td>
-      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>	
-    </p>
-    <p>	
-      <td>Cognome:</td>
-      <td><input type="text" th:field="*{cognome}" /></td>
-      <td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
-    </p>
-    <p>	
-      <td>Nazionalità:</td>
-      <td><input type="text" th:field="*{nazionalità}" /></td>
-      <td th:if="${#fields.hasErrors('nazionalità')}" th:errors="*{nazionalità}"></td>
-    </p><p>	
-      <td>Data di Nascita:</td>
-      <td><input type="text" th:field="*{dataDiNascita}" /></td>
-      <td th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></td>
-    </p><p>	
-      <td>Data di Morte:</td>
-      <td><input type="text" th:field="*{dataDiMorte}" /></td>
-      <td th:if="${#fields.hasErrors('dataDiMorte')}" th:errors="*{dataDiMorte}"></td>
-    </p>    
-    <p>	
-      <input type="submit" value="Inserisci Autore" />
-    </p>
-  </fieldset>
-</form:form>
+	<form:form commandName="autore" method="post" action="/createAutore">
+		<fieldset>
+			<legend>Aggiungi un autore</legend>
+			<table>
+
+				<tr>
+					<td><label for="nome">Titolo</label></td>
+					<td><input type="text" th:field="*{nome}" /></td>
+					<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" />
+				</tr>
+
+				<td>Cognome:</td>
+				<td><input type="text" th:field="*{cognome}" /></td>
+				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
+				</p>
+				<p>
+					<td>Nazionalità:</td>
+					<td><input type="text" th:field="*{nazionalità}" /></td>
+					<td th:if="${#fields.hasErrors('nazionalità')}"
+						th:errors="*{nazionalità}"></td>
+				</p>
+				<p>
+					<td>Data di Nascita:</td>
+					<td><input type="text" th:field="*{dataDiNascita}" /></td>
+					<td th:if="${#fields.hasErrors('dataDiNascita')}"
+						th:errors="*{dataDiNascita}"></td>
+				</p>
+				<p>
+					<td>Data di Morte:</td>
+					<td><input type="text" th:field="*{dataDiMorte}" /></td>
+					<td th:if="${#fields.hasErrors('dataDiMorte')}"
+						th:errors="*{dataDiMorte}"></td>
+				</p>
+				<p>
+					<input type="submit" value="Inserisci Autore" />
+				</p>
+			</table>
+		</fieldset>
+	</form:form>
+	<a href="/index"> <img src="/img/Homepage.png" /></a>
 </body>
 </html>

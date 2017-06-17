@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.springframework.org/tags/form">
+<html xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Aggiungi un quadro</title>
 </head>
 <body>
-<form:form commandName="quadro" method="post" action="/createQuadro">
-  <fieldset>
-    <legend>Aggiungi un quadro</legend>
-   <p>
-      <td>Titolo:</td>
-      <td><input type="text" th:field="*{titolo}" /></td>
-      <td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></td>			
-    </p>
-    <p>	
-      <td>Anno:</td>
-      <td><input type="text" th:field="*{anno}" /></td>
-      <td th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></td>
-    </p>
-    <p>	
-      <td>Tecnica:</td>
-      <td><input type="text" th:field="*{tecnica}" /></td>
-      <td th:if="${#fields.hasErrors('tecnica')}" th:errors="*{tecnica}"></td>
-    </p><p>	
-      <td>Dimensioni:</td>
-      <td><input type="text" th:field="*{dimensioni}" /></td>
-      <td th:if="${#fields.hasErrors('dimensioni')}" th:errors="*{dimensioni}"></td>
-    </p><p>	
-      <td>Autore:</td>
-      <td><input type="text" th:field="*{autore}" /></td>
-      <td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
-    </p>    
-    <p>	
-      <input type="submit" value="Inserisci Quadro" />
-    </p>
-  </fieldset>
-</form:form>
+	<form:form commandName="quadro" method="post" action="/createQuadro">
+		<fieldset>
+			<legend>Aggiungi un quadro</legend>
+
+			<p>
+				<label for="username">Titolo</label> <input type="text"
+					th:field="*{titolo}" />
+			<p th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}">
+				Errore!</p>
+
+			<p>
+			<label for="anno">Anno</label> <input type="text" th:field="anno" />
+			<p th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}">
+				Errore!</p>
+
+			<p>
+			<label for="dimensioni">Dimensioni</label> <input type="text"
+				th:field="dimensioni" />
+			<p th:if="${#fields.hasErrors('dimensioni')}"
+				th:errors="*{dimensioni}">Errore!</p>
+
+			<p>
+			<label for="tecnica">Tecnica</label> <input type="text"
+				th:field="tecnica" />
+			<p th:if="${#fields.hasErrors('tecnica')}" th:errors="*{tecnica}">
+				Errore!</p>
+
+			<p>
+			<label for="autore">Nome dell'autore</label> <input type="text"
+				th:field="tecnica" />
+			<p th:if="${#fields.hasErrors('tecnica')}" th:errors="*{tecnica}">
+				Errore!</p>
+
+			<p>
+				<input type="submit" value="Inserisci Quadro" />
+			</p>
+
+		</fieldset>
+	</form:form>
+	<a href="/index"> <img src="/img/Homepage.png" /></a>
 </body>
 </html>

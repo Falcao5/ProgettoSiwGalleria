@@ -51,7 +51,7 @@ public class Quadro{
 	private Dimension dimensioni;
 	
 	@ManyToOne
-	@JoinColumn(name="AUTORE_ID")
+	@JoinColumn(name="autore_id")
 	private Autore autore;
 	
 	/**

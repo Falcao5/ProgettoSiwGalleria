@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:form="http://www.springframework.org/tags/form">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Aggiungi un amministratore</title>
 </head>
 <body>
 
-<form:form commandName="amministratore" method="post" action="/createAmministratore">
-  <fieldset>
-    <legend>Aggiungi un amministratore</legend>
-    <p>
-      <td>Nome:</td>
-      <td><input type="text" th:field="*{nome}" /></td>
-      <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
-    </p>
-    <p>
-      <td>Password:</td>
-      <td><input type="text" th:field="*{password}" /></td>
-      <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
-    </p>
-    <p>  
-      <input type="submit" value="Inserisci amministratore" />
-    </p>
-  </fieldset>
-</form:form>
+	<form:form commandName="amministratore" method="post"
+		action="/createAmministratore">
+		<fieldset>
+			<legend>Aggiungi un amministratore</legend>
+			<p>
+				<td>Nome:</td>
+				<td><input type="text" th:field="*{nome}" /></td>
+				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
+			</p>
+			<p>
+				<td>Password:</td>
+				<td><input type="text" th:field="*{password}" /></td>
+				<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+			</p>
+			<p>
+				<input type="submit" value="Inserisci amministratore" />
+			</p>
+		</fieldset>
+	</form:form>
+
+	<a href="/index"> <img src="/img/Homepage.png" /></a>
 </body>
 </html>

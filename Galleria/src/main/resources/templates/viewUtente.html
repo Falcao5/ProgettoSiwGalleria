@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1"/>
+<meta charset="ISO-8859-1" />
 <title>Utente registrato</title>
 </head>
 
 <body>
 	<p th:text="${utente.username}">Username</p>
 	
-	<a href="/index">Homepage</a>
+	<form action="/login" method="get">
+    	<input type="submit" value="Login" name="login"/>
+    </form>
 	
+	<a href="/index"> <img src="/img/Homepage.png" /></a>
+
 </body>
 </html>

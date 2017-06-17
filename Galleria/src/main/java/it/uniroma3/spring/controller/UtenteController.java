@@ -39,6 +39,7 @@ public class UtenteController {
       }
       
       this.service.add(utente);
+      
       return "/viewUtente";
     }
     

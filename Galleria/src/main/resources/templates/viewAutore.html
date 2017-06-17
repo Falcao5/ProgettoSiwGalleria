@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:c="http://www.springframework.org/tags">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Lista dei autori</title>
 </head>
 <body>
-<p>
-  <a href="createAutore">Inserisci un altro autore</a>
-</p>
-<fieldset>
-<legend>Autori inseriti</legend>
-<c:forEach items="${autoriList}" var="autore">
-  Nome: <c:out value="${autore.nome}" /><br/><br/>
-  Cognome: <c:out value="${autore.cognome}" /><br/><br/>
-  Nazionalità: <c:out value="${autore.nazionalità}" /><br/><br/>
-  Data Di Nascita: <c:out value="${autore.dataDiNascita}" /><br/><br/>
-  Data Di Morte: <c:out value="${autore.dataDiMorte}" /><br/><br/>
-  <hr/>
-</c:forEach>
-</fieldset>
+	<p>
+		<a href="createAutore">Inserisci un altro autore</a>
+	</p>
+	<fieldset>
+		<legend>Autori inseriti</legend>
+		<c:forEach items="${autoriList}" var="autore">
+  Nome: <c:out value="${autore.nome}" />
+			<br />
+			<br />
+  Cognome: <c:out value="${autore.cognome}" />
+			<br />
+			<br />
+  Nazionalità: <c:out value="${autore.nazionalità}" />
+			<br />
+			<br />
+  Data Di Nascita: <c:out value="${autore.dataDiNascita}" />
+			<br />
+			<br />
+  Data Di Morte: <c:out value="${autore.dataDiMorte}" />
+			<br />
+			<br />
+			<hr />
+		</c:forEach>
+	</fieldset>
 
+	<a href="/index"> <img src="/img/Homepage.png" /></a>
 </body>
 </html>

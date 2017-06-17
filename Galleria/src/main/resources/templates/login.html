@@ -4,6 +4,7 @@
 </head>
 
 <body>
+
 	<div>
 		<form name="f" th:action="@{/login}" method="post">
 			<fieldset>
@@ -12,25 +13,26 @@
 				<div th:if="${param.error}" class="alert alert-error">
 					<h1>Username o password non validi</h1>
 				</div>
-																				<!-- 	**************** IMPORTANTE ********************
+																		<!-- 	**************** IMPORTANTE ********************
 																				NON INDICARE SE E' SBAGLIATO USERNAME O PASSWORD, 
 																				RENDE IL SISTEMA PIU' VULNERABILE 					-->
 
-				<div th:if="${param.logout}" class="alert alert-success">Hai
-					eseguito con successo il logout</div>
+				<div th:if="${param.logout}" class="alert alert-success">
+					<h1>Hai eseguito con successo il logout</h1>
+				</div>
 
 				<table>
-				
+
 					<tr>
 						<td><label for="username">Username</label></td>
-						<td><input type="text" id="username" name="username" /></td>
+						<td><input type="text" id="username" name="_csrf.username"/></td>
 					</tr>
 
 					<tr>
 						<td><label for="password">Password</label></td>
-						<td><input type="password" id="password" name="password" /></td>
+						<td><input type="password" id="password" name="_csrf.password"/></td>
 					</tr>
-					
+
 					<tr>
 						<td>
 							<div class="form-actions">
@@ -38,33 +40,32 @@
 							</div>
 						</td>
 					</tr>
-				
+
 				</table>
 
 			</fieldset>
 		</form>
-		
+
 		<form name="f" th:action="@{/signup}" method="get">
 			<fieldset>
 				<legend>Registrati </legend>
 				<table>
-				
-				<tr>
-					<td>Se non sei ancora registrato</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div class="form-actions">
-							<button type="submit" class="btn">Registrati </button>
-						</div>
-					</td>
-				</tr>
-				
+
+					<tr>
+						<td>
+							<div class="form-actions">
+								<label>Se non sei ancora registrato </label><br/>
+								<button type="submit" class="btn">Registrati</button>
+							</div>
+						</td>
+					</tr>
+
 				</table>
 			</fieldset>
 		</form>
-		
+
 	</div>
+
+	<a href="/index"> <img src="/img/Homepage.png" /></a>
 </body>
 </html>
