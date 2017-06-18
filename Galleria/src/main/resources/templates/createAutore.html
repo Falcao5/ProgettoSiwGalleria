@@ -7,45 +7,7 @@
 </head>
 <body>
 
-	<form:form commandName="autore" method="post" action="/createAutore">
-		<fieldset>
-			<legend>Aggiungi un autore</legend>
-			<table>
-
-				<tr>
-					<td><label for="nome">Titolo</label></td>
-					<td><input type="text" th:field="*{nome}" /></td>
-					<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" />
-				
-
-				<td>Cognome:</td>
-				<td><input type="text" th:field="*{cognome}" /></td>
-				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
-
-					<td>Nazionalità:</td>
-					<td><input type="text" th:field="*{nazionalità}" /></td>
-					<td th:if="${#fields.hasErrors('nazionalità')}"
-						th:errors="*{nazionalità}"></td>
-
-					<td>Data di Nascita:</td>
-					<td><input type="text" th:field="*{dataDiNascita}" /></td>
-					<td th:if="${#fields.hasErrors('dataDiNascita')}"
-						th:errors="*{dataDiNascita}"></td>
-
-					<td>Data di Morte:</td>
-					<td><input type="text" th:field="*{dataDiMorte}" /></td>
-					<td th:if="${#fields.hasErrors('dataDiMorte')}"
-						th:errors="*{dataDiMorte}"></td>
-
-					<td><input type="submit" value="Inserisci Autore" /></td>
-
-				</tr>
-			</table>
-		</fieldset>
-	</form:form>
-	<a href="/index"> <img src="/img/Homepage.png" /></a>
-
-<form:form commandName="autore" method="post" action="create">
+<form:form commandName="autore" method="post" action="/create">
   <fieldset>
     <legend>Aggiungi un autore</legend>
     <table>

@@ -51,7 +51,7 @@ public class Quadro{
 	private Dimension dimensioni;
 	
 	@ManyToOne
-	@JoinColumn(name="autore_id")
+	@JoinColumn
 	private Autore autore;
 	
 	/**
@@ -72,7 +72,7 @@ public class Quadro{
 		this.titolo = titolo;
 		this.anno = anno;
 		this.tecnica = tecnica;
-		this.dimensioni = dimensioni;
+//		this.dimensioni = dimensioni;
 //		this.autore = autore;
 	}
 
@@ -121,16 +121,16 @@ public class Quadro{
 	/**
 	 * @return the dimensioni
 	 */
-	public Dimension getDimensioni() {
-		return dimensioni;
-	}
-
-	/**
-	 * @param dimensioni the dimensioni to set
-	 */
-	public void setDimensioni(Dimension dimensioni) {
-		this.dimensioni = dimensioni;
-	}
+//	public Dimension getDimensioni() {
+//		return dimensioni;
+//	}
+//
+//	/**
+//	 * @param dimensioni the dimensioni to set
+//	 */
+//	public void setDimensioni(Dimension dimensioni) {
+//		this.dimensioni = dimensioni;
+//	}
 	
 	/**
 	 * @return the autore

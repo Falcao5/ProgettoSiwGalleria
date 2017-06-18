@@ -1,0 +1,28 @@
+CASI D'USO:
+
+UC1: Un amministratore inserisce un quadro.
+Caso di successo dello scenario principale. Attore: Amministratore
+
+1. Un amministratore sceglie di eseguire il login.
+2. L'amministratore esegue il login. Il Sistema mostra una vista contenente le possibili azioni protette da login.
+3. L'amministratore sceglie l'azione di inserimento di un quadro.
+4. L'amministratore inserisce i dati relativi al quadro. In particolare sono di interesse: titolo, anno, tecnica, dimensioni e autore.
+5. L'amministratore conferma l'inserimento del quadro.
+6. Il Sistema mostra una vista con un riepilogo del quadro inserito, e la possibilità di scegliere tra un nuovo inserimento di un quadro, oppure di tornare alla vista contenente le possibili azioni protette da login.
+
+UC2: Un amministratore elimina un quadro.
+Caso di successo dello scenario principale. Attore: Amministratore
+
+1. Un amministratore sceglie di eseguire il login.
+2. L'amministratore esegue il login. Il Sistema mostra una vista contenente le possibili azioni protette da login.
+3. L'amministratore sceglie l'azione di eliminare un quadro.
+4. ****
+
+UC3: Un amministratore inserisce un autore.
+Caso di successo dello scenario principale. Attore: Amministratore
+1. Un amministratore sceglie di eseguire il login.
+2. L'amministratore esegue il login. Il Sistema mostra una vista contenente le possibili azioni protette da login.
+3. L'amministratore sceglie l'azione di inserimento di un autore.
+4. L'amministratore inserisce i dati relativi all'autore. In particolare sono di interesse: nome, cognome, nazionalità, data di nascita e data di morte.
+5. L'amministratore conferma l'inserimento del autore.
+6. Il Sistema mostra una vista con un riepilogo dell'autore inserito, e la possibilità di scegliere tra un nuovo inserimento di un autore, oppure di tornare alla vista contenente le possibili azioni protette da login.

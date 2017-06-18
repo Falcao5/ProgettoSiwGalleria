@@ -15,6 +15,6 @@ public interface QuadroRepository extends CrudRepository<Quadro, Long> {
 	
 	List<Quadro> findByTecnica(String tecnica);
 	
-	List<Quadro> findByDimensioni(Dimension dimensioni);
+//	List<Quadro> findByDimensioni(Dimension dimensioni);
 	
 }

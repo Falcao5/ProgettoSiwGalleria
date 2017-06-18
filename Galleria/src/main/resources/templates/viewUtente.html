@@ -6,13 +6,21 @@
 </head>
 
 <body>
-	<p th:text="${utente.username}">Username</p>
+	Username: <p th:text="${utente.username}">Not found</p>
+	Password: <p th:password="${utente.password}">Protected</p>
 	
 	<form action="/login" method="get">
     	<input type="submit" value="Login" name="login"/>
     </form>
 	
+	<form action="#" th:action="@{/protected/createUtente}" th:object="${utente}"
+			method="get">
+				<input type="submit" value="Aggiungi un altro quadro" />
+		</form>
+	
 	<a href="/index"> <img src="/img/Homepage.png" /></a>
-
+	
+	
+	
 </body>
 </html>

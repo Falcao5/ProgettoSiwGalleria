@@ -33,7 +33,7 @@ public class Utente {
 	
 	/* Colonna necessaria a Spring Security */
 	@Column(nullable=false)		
-	private byte enabled = 1;
+	private boolean enabled = true;
 	
 	public Utente(){
 		

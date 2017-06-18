@@ -10,6 +10,7 @@
 package it.uniroma3.spring.model;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -46,7 +47,7 @@ public class Autore {
 	@Column(nullable=false, length=50)
 	private String nome;
 	
-	@Column(nullable=false, length=50)
+	@Column(nullable=false, length=50, unique=true)
 	private String cognome;
 	
 	@Column(nullable=true, length=200)
@@ -79,7 +80,7 @@ public class Autore {
 	}
 	
 	public Autore(){
-		
+		this.quadri = new LinkedList<>();
 	}
 	
 	/**

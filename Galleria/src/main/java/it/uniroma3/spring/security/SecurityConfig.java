@@ -20,14 +20,20 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	@Autowired
+	private  DataSource dataSource;
+	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http
+    	.csrf().disable()
         .authorizeRequests()
         	.antMatchers("/",
    				 		 "/home")
         				.permitAll()
-            .antMatchers("/autenticato").authenticated()
+            .antMatchers(	"/autenticato", 
+            				"/protected/**")
+            				.authenticated()
             .and()
         .formLogin()
             .loginPage("/login").successForwardUrl("/autenticato")
@@ -41,13 +47,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
            .permitAll();
     }
     
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .inMemoryAuthentication()
-                .withUser("user").password("pass").roles("ADMIN");
-        
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	  
+	  auth
+          .inMemoryAuthentication()
+          	.withUser("admin").password("pass").authorities("ADMIN");
+      
 }
+    
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//            .inMemoryAuthentication()
+//                .withUser("user").password("pass").roles("ADMIN");
+//        
+//}
 	
 //	@Autowired
 //	private DataSource dataSource;
@@ -59,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //			.jdbcAuthentication()
 //				.dataSource(dataSource)
 //				.usersByUsernameQuery(
-//                        "select username,password, enabled from users where username=?");
+//                        "select username,password,enabled from users where username=?");
 //		
 //	}
 //	
