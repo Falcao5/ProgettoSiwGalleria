@@ -11,4 +11,9 @@ public class LoginController {
   public String login(){
     return "login";
   }
+  
+  @RequestMapping(value="/autenticato")
+  public String loggedIn(){
+    return "autenticato";
+  }
 }

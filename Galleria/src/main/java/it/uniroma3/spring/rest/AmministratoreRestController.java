@@ -16,7 +16,7 @@ public class AmministratoreRestController {
 	AmministratoreService amministratoreService;
 	
     @RequestMapping("/rest/amministratore/{id}")
-    public Amministratore getCustomer(@PathVariable Long id) {
+    public Amministratore getAmministratore(@PathVariable Long id) {
         return amministratoreService.findbyId(id);
     }
 }

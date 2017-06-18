@@ -10,5 +10,4 @@ public interface UtenteRepository extends CrudRepository<Utente, Long> {
 	
     List<Utente> findByUsername(String username);
 	
-    
 }

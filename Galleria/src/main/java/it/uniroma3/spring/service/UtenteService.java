@@ -25,4 +25,5 @@ public class UtenteService {
     public Utente findbyId(Long id) {
 		return this.utenteRepository.findOne(id);
 	}
+    
 }

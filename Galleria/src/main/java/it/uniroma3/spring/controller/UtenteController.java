@@ -9,9 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import javax.validation.*;
 
 import it.uniroma3.spring.model.Utente;
+import it.uniroma3.spring.repository.UtenteRepository;
 import it.uniroma3.spring.service.UtenteService;
 
 @Controller
@@ -19,6 +21,9 @@ public class UtenteController {
   
 	@Autowired
 	private UtenteService service;
+	
+	@Autowired
+    private UtenteRepository utenteRepository; 
 
   public UtenteController(){
     
@@ -27,7 +32,7 @@ public class UtenteController {
   //Mostra la pagina di creazione 
     @RequestMapping(value = "/createUtente", method = RequestMethod.GET)
     public String welcome(Model model) {
-      model.addAttribute("utente",new Utente());
+      model.addAttribute("found",new Utente());
       return "/createUtente";
     }
   

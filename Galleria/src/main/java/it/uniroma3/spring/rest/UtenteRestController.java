@@ -15,7 +15,7 @@ public class UtenteRestController {
 	UtenteService utenteService;
 
 	@RequestMapping("/rest/utente/{id}")
-	public Utente getCustomer(@PathVariable Long id) {
+	public Utente getUtente(@PathVariable Long id) {
 		return utenteService.findbyId(id);
 	}
 }

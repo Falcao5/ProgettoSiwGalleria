@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.uniroma3.spring.facade.QuadroFacade;
 import it.uniroma3.spring.model.Quadro;
 
 @Controller

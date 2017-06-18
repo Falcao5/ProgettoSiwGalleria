@@ -17,7 +17,7 @@ public class AutoreRestController {
 	AutoreService autoreService;
 
 	@RequestMapping("/rest/autore/{id}")
-	public Autore getCustomer(@PathVariable Long id) {
+	public Autore getAutore(@PathVariable Long id) {
 		return autoreService.findbyId(id);
 	}
 }

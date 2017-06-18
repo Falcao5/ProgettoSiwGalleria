@@ -10,62 +10,70 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import it.uniroma3.spring.repository.UtenteRepository;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-	@Autowired
-	private DataSource dataSource;
-
-	public SecurityConfig() {
-		super();
-	}
-
-	//    @Autowired
-	//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	//    	auth
-	//    		.jdbcAuthentication()
-	//    			.dataSource(dataSource)
-	//    			.withDefaultSchema()
-	//    			.withUser("user").password("password").roles("USER").and()
-	//    			.withUser("admin").password("password").roles("USER", "ADMIN");
-	//    	
-	//    }
-
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-
-		auth
-		.jdbcAuthentication().dataSource(dataSource)
-		.usersByUsernameQuery("SELECT username,password,1 FROM users where username=?")
-		.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
-
-	}
-
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-
-		http
-		.csrf().disable()
-		.formLogin().loginPage("/login").defaultSuccessUrl("/autenticato").successForwardUrl("/autenticato")
-		.permitAll()
-		.and()
-		.logout()
-		.permitAll()
-		.and()
-		.authorizeRequests()
-		.antMatchers("/autenticato").authenticated()
-		.anyRequest().permitAll();
-	}
-
-	//	@Bean
-	//	@Override
-	//	public AuthenticationManager authenticationManagerBean() throws Exception {
-	//		return super.authenticationManagerBean();
-	//	}
+	
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+    	http
+        .authorizeRequests()
+        	.antMatchers("/",
+   				 		 "/home")
+        				.permitAll()
+            .antMatchers("/autenticato").authenticated()
+            .and()
+        .formLogin()
+            .loginPage("/login").successForwardUrl("/autenticato")
+            .permitAll()
+            .and()
+        .logout()
+	        .invalidateHttpSession(true)
+	        .logoutUrl("/logout")
+	        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+	        .logoutSuccessUrl("/")
+           .permitAll();
+    }
+    
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+            .inMemoryAuthentication()
+                .withUser("user").password("pass").roles("ADMIN");
+        
+}
+	
+//	@Autowired
+//	private DataSource dataSource;
+//
+//	@Autowired
+//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//		
+//		auth
+//			.jdbcAuthentication()
+//				.dataSource(dataSource)
+//				.usersByUsernameQuery(
+//                        "select username,password, enabled from users where username=?");
+//		
+//	}
+//	
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http
+//		.authorizeRequests()                                                                
+//			.antMatchers("/resources/**", "/signup", "/about").permitAll()                  
+//			.antMatchers("/admin/**").hasRole("ADMIN")                                      
+//			.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")            
+//			.anyRequest().authenticated()                                                   
+//		.and()
+//			.formLogin().loginPage("/login").permitAll()
+//		.and()
+//			.httpBasic();
+//	}
+	
 }
