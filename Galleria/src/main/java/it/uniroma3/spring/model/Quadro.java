@@ -30,8 +30,8 @@ import javax.persistence.Table;
 //	@NamedQuery(name="Quadro.findByAnno", query="SELECT q FROM Quadro q WHERE q.anno = :anno")
 //})
 
-@Table(name="quadri")
 @Entity
+@Table(name="quadri")
 public class Quadro{
 	
 	@Id
