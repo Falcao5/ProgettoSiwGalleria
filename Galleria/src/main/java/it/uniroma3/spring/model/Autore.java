@@ -18,9 +18,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,20 +25,10 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="autori")
-//@NamedQueries({
-//	@NamedQuery(name = "Autore.findAll", query = "SELECT a FROM Autore a"),
-//	@NamedQuery(name="Autore.findById", query="SELECT a FROM Autore a WHERE a.id = :id"),
-//	@NamedQuery(name="Autore.findByNome", query="SELECT a FROM Autore a WHERE a.nome = :nome"),
-//	@NamedQuery(name="Autore.findByCognome", query="SELECT a FROM Autore a WHERE a.cognome = :cognome"),
-//	@NamedQuery(name="Autore.findByNazionalità", query="SELECT a FROM Autore a WHERE a.nazionalita = :nazionalita"),
-//	@NamedQuery(name="Autore.findByDataDiNascita", query="SELECT a FROM Autore a WHERE a.dataDiNascita = :dataDiNascita"),
-//	@NamedQuery(name="Autore.findByDataDiMorte", query="SELECT a FROM Autore a WHERE a.dataDiMorte = :dataDiMorte")
-//})
 public class Autore {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="AUTORE_ID")
 	private Long id;
 	
 	@Column(nullable=false, length=50)

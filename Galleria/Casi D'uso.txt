@@ -4,25 +4,48 @@ UC1: Un amministratore inserisce un quadro.
 Caso di successo dello scenario principale. Attore: Amministratore
 
 1. Un amministratore sceglie di eseguire il login.
-2. L'amministratore esegue il login. Il Sistema mostra una vista contenente le possibili azioni protette da login.
-3. L'amministratore sceglie l'azione di inserimento di un quadro.
-4. L'amministratore inserisce i dati relativi al quadro. In particolare sono di interesse: titolo, anno, tecnica, dimensioni e autore.
-5. L'amministratore conferma l'inserimento del quadro.
-6. Il Sistema mostra una vista con un riepilogo del quadro inserito, e la possibilità di scegliere tra un nuovo inserimento di un quadro, oppure di tornare alla vista contenente le possibili azioni protette da login.
+2. L'amministratore esegue il login. 
+3. Il Sistema mostra una vista contenente le possibili azioni protette da login.
+4. L'amministratore sceglie l'azione di inserimento di un quadro.
+5. L'amministratore inserisce i dati relativi al quadro. In particolare sono di interesse: titolo, anno, tecnica, dimensioni e autore.
+6. L'amministratore conferma l'inserimento del quadro.
+7. Il Sistema mostra una vista con un riepilogo del quadro inserito, e la possibilità di scegliere tra un nuovo inserimento di un quadro, oppure di tornare alla vista contenente le possibili azioni protette da login.
+
 
 UC2: Un amministratore elimina un quadro.
 Caso di successo dello scenario principale. Attore: Amministratore
 
 1. Un amministratore sceglie di eseguire il login.
-2. L'amministratore esegue il login. Il Sistema mostra una vista contenente le possibili azioni protette da login.
-3. L'amministratore sceglie l'azione di eliminare un quadro.
-4. ****
+2. L'amministratore esegue il login. 
+4. Il Sistema mostra una vista contenente le possibili azioni protette da login.
+4. L'amministratore sceglie l'azione di eliminare un quadro.
+5. ****
+
 
 UC3: Un amministratore inserisce un autore.
 Caso di successo dello scenario principale. Attore: Amministratore
+
 1. Un amministratore sceglie di eseguire il login.
-2. L'amministratore esegue il login. Il Sistema mostra una vista contenente le possibili azioni protette da login.
-3. L'amministratore sceglie l'azione di inserimento di un autore.
-4. L'amministratore inserisce i dati relativi all'autore. In particolare sono di interesse: nome, cognome, nazionalità, data di nascita e data di morte.
-5. L'amministratore conferma l'inserimento del autore.
-6. Il Sistema mostra una vista con un riepilogo dell'autore inserito, e la possibilità di scegliere tra un nuovo inserimento di un autore, oppure di tornare alla vista contenente le possibili azioni protette da login.
+2. L'amministratore esegue il login. 
+3. Il Sistema mostra una vista contenente le possibili azioni protette da login.
+4. L'amministratore sceglie l'azione di inserimento di un autore.
+5. L'amministratore inserisce i dati relativi all'autore. In particolare sono di interesse: nome, cognome, nazionalità, data di nascita e data di morte.
+6. L'amministratore conferma l'inserimento del autore.
+7. Il Sistema mostra una vista con un riepilogo dell'autore inserito, e la possibilità di scegliere tra un nuovo inserimento di un autore, oppure di tornare alla vista contenente le possibili azioni protette da login.
+
+
+UC4: Un utente cerca un quadro.
+Caso di successo dello scenario principale. Attore: Utente
+
+1. Un utente sceglie di cercare un quadro.
+2. L'utente inserisce il titolo del quadro.
+3. Il Sistema mostra una vista contenente un riepilogo dei dati relativi al quadro, e la possibilità di scegliere tra una nuova ricerca oppure tornare alla vista principale.
+
+
+UC5: Un utente cerca un autore.
+Caso di successo dello scenario principale. Attore: Utente
+
+
+1. Un utente sceglie di cercare un autore.
+2. L'utente inserisce il cognome dell'autore. Per semplicità si suppone che non esistano autori con lo stesso cognome.
+3. Il Sistema mostra una vista contenente un riepilogo dei dati relativi al autore, e la possibilità di scegliere tra una nuova ricerca oppure tornare alla vista principale.
