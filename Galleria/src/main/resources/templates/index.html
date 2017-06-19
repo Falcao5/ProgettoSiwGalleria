@@ -2,24 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 
 <head>
-    <title>Homepage</title>
-    <meta charset="UTF-8" />
+<title>Homepage</title>
+<meta charset="UTF-8" />
 </head>
+
 <body>
 	Benvenuto nella Galleria Lauzicone. Esegui il login
-    <form action="/login" method="get">
-    	<input type="submit" value="Login" name="login"/>
-    </form>
-        
-    <form action="#" th:action="@{/viewQuadro}" method="get">
-    
-    	<select id="quadro" th:field="*{quadro}">
-			<option value="">Seleziona un quadro</option>
-			<option th:each="quadro : ${quadri}" th:value="${quadro.id}" th:text="${quadro.titolo}"></option>			
-		</select>
-		
-		<input type="submit" th:text="Cerca Quadro"/>
+	<form action="/login" method="get">
+		<input type="submit" value="Login" name="login" />
 	</form>
-    
+
+
+	<form action="#" th:action="@{/viewQuadro}" method="get">
+		<select th:field="*{quadro}">
+		</select>
+		<input type="submit" value="Cerca Quadro" />
+	</form>
 </body>
 </html>

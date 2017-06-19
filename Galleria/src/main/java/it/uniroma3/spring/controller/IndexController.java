@@ -21,11 +21,9 @@ public class IndexController {
 	private QuadroService quadroService;
 
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-	public String goHome(Model model) {
-		
-		Iterable<Quadro> quadri = quadroService.findAll();
-		
-		model.addAttribute("quadri", quadri);
-		return "index";
+	public String goHomeGet(){
+		return "/index";
 	}
+
+	
 }

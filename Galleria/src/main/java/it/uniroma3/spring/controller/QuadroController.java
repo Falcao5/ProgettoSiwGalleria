@@ -35,22 +35,23 @@ public class QuadroController {
 	private QuadroService quadroService;
 
 	public QuadroController(){
-
+		
 	}
 	
 	@RequestMapping(value = "/viewQuadro", method = RequestMethod.GET)
-	public String viewQuadroByTitolo(Model model, @RequestAttribute Quadro quadro){
+	public ModelAndView viewQuadroFindByTitolo(@ModelAttribute Quadro quadro){
+		ModelAndView mav = new ModelAndView();
 		
-		Quadro quadroTrovato = quadroService.findByTitolo(quadro.getTitolo());
+		mav.getModel().put("quadro", quadro);
 		
-		model.addAttribute("quadro", quadroTrovato);
+		mav.setViewName("/viewQuadro");
 		
-		return "/viewQuadro";
+		return mav;
 	}
 	
 	//Mostra la pagina di creazione 
 	@RequestMapping(value = "/protected/createQuadro", method = RequestMethod.GET)
-	public String welcome(Model model) {
+	public String createQuadroGet(Model model) {
 		Quadro quadro = new Quadro();
 		model.addAttribute("quadro", quadro);
 		Iterable<Autore> autori = autoreService.findAll();
@@ -61,16 +62,13 @@ public class QuadroController {
 
 	//controlla se ci sono errori di validazione e in caso contrario aggiunge l'utente alla lista
 	@RequestMapping(value = "/protected/createQuadro", method = RequestMethod.POST)
-	public ModelAndView create(@ModelAttribute Quadro quadro, @ModelAttribute Autore autore) {
+	public ModelAndView createQuadroPost(@ModelAttribute Quadro quadro, @ModelAttribute Autore autore) {
 		ModelAndView mav = new ModelAndView();
 		
 		this.quadroService.add(quadro);
 		
 		Map<String,Object> mMap = mav.getModel();
 		mMap.put("quadro", quadro);
-		
-		System.out.println(quadro.getDimensioni().getHeight());
-		System.out.println(quadro.getDimensioni().getWidth());
 		
 		mMap.put("autore", autore);
 		

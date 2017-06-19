@@ -14,7 +14,6 @@
 	<label>Dimensioni </label>
 	<p th:text="${quadro.dimensioni.width + 'x' + quadro.dimensioni.height + ' cm'}">Not found</p>
 	<label>Autore </label>
-	<p th:text="${autore.nome + ' ' + autore.cognome}">Not found</p>
 
 	<form action="#" th:action="@{/protected/createQuadro}" method="get">
 		<input type="submit" value="Aggiungi un altro quadro" />
