@@ -43,7 +43,6 @@ public class QuadroController {
 		model.addAttribute("quadro", quadro);
 		Iterable<Autore> autori = autoreService.findAll();
 		model.addAttribute("autori", autori);
-		model.addAttribute("dimensioni", quadro.getDimensioni());
 		
 		return "/createQuadro";
 	}
@@ -69,8 +68,8 @@ public class QuadroController {
 	}
 	
 	@RequestMapping(value="/protected/removeQuadro", method = RequestMethod.GET)
-	public String remove(@ModelAttribute Quadro quadro){
-		this.quadroService.removeByQuadro(quadro);
+	public String remove(@ModelAttribute Long quadroId){
+		this.quadroService.removeById(quadroId);
 		return "/home";
 	}
 
