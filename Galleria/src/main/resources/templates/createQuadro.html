@@ -1,34 +1,46 @@
-<html xmlns:form="http://www.springframework.org/tags/form">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>Aggiungi un quadro</title>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<form:form commandName="quadro" method="post" action="/createQuadro">
-  <fieldset>
-    <legend>Aggiungi un quadro</legend>
-    <p>
-      <form:label for="titolo" path="titolo">Titolo</form:label><br/>
-      <form:input type="text" path="titolo" /> <form:errors path="titolo" />			
-    </p>
-    <p>	
-      <form:label for="dimensioni" path="dimensioni">Dimensioni</form:label><br/>
-      <form:input type="text" path="dimensioni" /> <form:errors path="dimensioni" />
-    </p>
-    <p>	
-      <form:label for="anno" path="anno">Anno</form:label><br/>
-      <form:input type="text" path="anno" /> <form:errors path="anno" />
-    </p><p>	
-      <form:label for="tecnica" path="tecnica">Tecnica</form:label><br/>
-      <form:input type="text" path="tecnica" /> <form:errors path="tecnica" />
-    </p><p>	
-      <form:label for="autore" path="autore">Autore</form:label><br/>
-      <form:input type="text" path="autore" /> <form:errors path="autore" />
-    </p>    
-    <p>	
-      <input type="submit" value="Crea Quadro" />
-    </p>
-  </fieldset>
-</form:form>
+	<fieldset>
+		<legend>Crea un quadro</legend>
+		<form action="#" th:action="@{/protected/createQuadro}" th:object="${quadro}" method="post">
+			
+			<p>
+				<label>Titolo</label>
+				<input type="text" th:field="*{titolo}" />
+			</p>
+			
+			<p>
+				<label>Anno</label>
+				<input type="text" th:field="*{anno}" />
+			</p>
+			
+			<p>
+				<label>Tecnica</label>
+				<input type="text" th:field="*{tecnica}" />
+			</p>
+			
+			
+			
+			<p>	Dimensioni
+				<input type="text" th:field="*{dimensioni.width}" placeholder="larghezza"/>
+				 x 
+				<input type="text" th:field="*{dimensioni.height}" placeholder="altezza"/>
+			</p>
+			
+			<select id="autore" th:field="*{autore}">
+				<option value="">Seleziona un autore</option>
+				<option th:each="autore : ${autori}" th:value="${autore.id}" th:text="${autore.nome + ' ' + autore.cognome}"></option>			
+			</select>
+			
+			<p>
+				<input type="submit" value="Crea Quadro" />
+			</p>
+		</form>
+	</fieldset>
 </body>
 </html>

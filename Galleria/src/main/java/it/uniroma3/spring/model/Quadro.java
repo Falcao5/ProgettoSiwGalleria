@@ -51,7 +51,7 @@ public class Quadro{
 	 * Constructor without parameters
 	 */
 	public Quadro(){
-		
+		this.dimensioni = new Dimension();
 	}
 	
 	/**
@@ -65,8 +65,8 @@ public class Quadro{
 		this.titolo = titolo;
 		this.anno = anno;
 		this.tecnica = tecnica;
-//		this.dimensioni = dimensioni;
-//		this.autore = autore;
+		this.dimensioni = dimensioni;
+		this.autore = autore;
 	}
 
 	/**
@@ -114,30 +114,30 @@ public class Quadro{
 	/**
 	 * @return the dimensioni
 	 */
-//	public Dimension getDimensioni() {
-//		return dimensioni;
-//	}
-//
-//	/**
-//	 * @param dimensioni the dimensioni to set
-//	 */
-//	public void setDimensioni(Dimension dimensioni) {
-//		this.dimensioni = dimensioni;
-//	}
+	public Dimension getDimensioni() {
+		return dimensioni;
+	}
+
+	/**
+	 * @param dimensioni the dimensioni to set
+	 */
+	public void setDimensioni(Dimension dimensioni) {
+		this.dimensioni = dimensioni;
+	}
 	
 	/**
 	 * @return the autore
 	 */
-//	public Autore getAutore() {
-//		return autore;
-//	}
+	public Autore getAutore() {
+		return autore;
+	}
 
 	/**
 	 * @param autore the autore to set
 	 */
-//	public void setAutore(Autore autore) {
-//		this.autore = autore;
-//	}
+	public void setAutore(Autore autore) {
+		this.autore = autore;
+	}
 
 	@Override
 	public String toString() {

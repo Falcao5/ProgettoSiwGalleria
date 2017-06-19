@@ -1,35 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:c="http://www.springframework.org/tags">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Lista dei quadri</title>
+<meta charset="UTF-8" />
+<title>Quadro inserito</title>
 </head>
+
 <body>
-	<p>
-		<a href="createQuadro">Inserisci un altro quadro</a>
-	</p>
-	<fieldset>
-		<legend>Quadri inseriti</legend>
-		<c:forEach items="${quadriList}" var="quadro">
-  Titolo: <c:out value="${quadro.titolo}" />
-			<br />
-			<br />
-  Autore: <c:out value="${quadro.autore}" />
-			<br />
-			<br />
-  Anno: <c:out value="${quadro.anno}" />
-			<br />
-			<br />
-  Dimensioni: <c:out value="${quadro.dimensioni}" />
-			<br />
-			<br />
-  Tecnica: <c:out value="${quadro.tecnica}" />
-			<br />
-			<br />
-			<hr />
-		</c:forEach>
-	</fieldset>
+	<label>Titolo </label>
+	<p th:text="${quadro.titolo}">Not found</p>
+	<label>Anno </label>
+	<p th:text="${quadro.anno}">Not found</p>
+	<label>Tecnica </label>
+	<p th:text="${quadro.tecnica}">Not found</p>
+	<label>Dimensioni </label>
+	<p th:text="${quadro.dimensioni.width + 'x' + quadro.dimensioni.height + ' cm'}">Not found</p>
+	<label>Autore </label>
+	<p th:text="${autore.nome + ' ' + autore.cognome}">Not found</p>
+
+	<form action="#" th:action="@{/protected/createQuadro}" method="get">
+		<input type="submit" value="Aggiungi un altro quadro" />
+	</form>
 
 	<a href="/index"> <img src="/img/Homepage.png" /></a>
+
+
+
 </body>
 </html>
