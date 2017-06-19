@@ -67,5 +67,11 @@ public class QuadroController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/protected/removeQuadro", method = RequestMethod.GET)
+	public String remove(@ModelAttribute Quadro quadro){
+		this.quadroService.removeByQuadro(quadro);
+		return "/home";
+	}
 
 }

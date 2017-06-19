@@ -31,12 +31,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/",
    				 		 "/home")
         				.permitAll()
-            .antMatchers(	"/autenticato", 
-            				"/protected/**")
+            .antMatchers("/protected/**")
             				.authenticated()
             .and()
         .formLogin()
-            .loginPage("/login").successForwardUrl("/autenticato")
+            .loginPage("/login").successForwardUrl("/protected/autenticato")
             .permitAll()
             .and()
         .logout()

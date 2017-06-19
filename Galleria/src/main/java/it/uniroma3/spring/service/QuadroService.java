@@ -22,7 +22,11 @@ public class QuadroService {
         this.quadroRepository.save(quadro);
     }
     
-    public Quadro findbyId(Long id) {
+    public Quadro findById(Long id) {
 		return this.quadroRepository.findOne(id);
 	}
+    
+    public void removeByQuadro(Quadro quadro){
+    	this.quadroRepository.delete(quadro);
+    }
 }
