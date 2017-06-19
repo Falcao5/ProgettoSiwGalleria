@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org/">
 
 <head>
     <title>Homepage</title>
@@ -10,15 +10,16 @@
     <form action="/login" method="get">
     	<input type="submit" value="Login" name="login"/>
     </form>
+        
+    <form action="#" th:action="@{/viewQuadro}" method="get">
     
-    Oppure registrati
-    <form action="/signup" method="get">
-    	<input type="submit" value="Registrati" name="signup"/>
-    </form>
-    
-    <form action="/createQuadro" method="get">
-    	<input type="submit" value="Crea Quadro" name="creaQuadro"/>
-    </form>
+    	<select id="quadro" th:field="*{quadro}">
+			<option value="">Seleziona un quadro</option>
+			<option th:each="quadro : ${quadri}" th:value="${quadro.id}" th:text="${quadro.titolo}"></option>			
+		</select>
+		
+		<input type="submit" th:text="Cerca Quadro"/>
+	</form>
     
 </body>
 </html>

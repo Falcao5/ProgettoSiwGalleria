@@ -9,7 +9,7 @@ import it.uniroma3.spring.model.Quadro;
 
 public interface QuadroRepository extends CrudRepository<Quadro, Long> {
 	
-	List<Quadro> findByTitolo(String titolo);
+	Quadro findByTitolo(String titolo);
 	
 	List<Quadro> findByAnno(Integer anno);
 	

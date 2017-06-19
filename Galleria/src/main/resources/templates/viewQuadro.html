@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
 <head>
 <meta charset="UTF-8" />
 <title>Quadro inserito</title>
@@ -21,8 +20,10 @@
 		<input type="submit" value="Aggiungi un altro quadro" />
 	</form>
 	
-	<form action="#" th:action="@{/protected/removeQuadro}" th:object="${quadro.id}" method="get">
-		<input type="submit" value="Rimuovi questo quadro" />
+	
+	
+	<form action="#" th:action="@{'/protected/removeQuadro/' + ${quadro.id}}"  method="get">
+		<input type="submit" value="Cancella quadro"  sec:authorize="isAuthenticated()"/>
 	</form>
 
 	<a href="/index"> <img src="/img/Homepage.png" /></a>

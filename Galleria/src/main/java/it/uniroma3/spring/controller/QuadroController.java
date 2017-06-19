@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +37,17 @@ public class QuadroController {
 	public QuadroController(){
 
 	}
-
+	
+	@RequestMapping(value = "/viewQuadro", method = RequestMethod.GET)
+	public String viewQuadroByTitolo(Model model, @RequestAttribute Quadro quadro){
+		
+		Quadro quadroTrovato = quadroService.findByTitolo(quadro.getTitolo());
+		
+		model.addAttribute("quadro", quadroTrovato);
+		
+		return "/viewQuadro";
+	}
+	
 	//Mostra la pagina di creazione 
 	@RequestMapping(value = "/protected/createQuadro", method = RequestMethod.GET)
 	public String welcome(Model model) {
@@ -67,10 +79,10 @@ public class QuadroController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/protected/removeQuadro", method = RequestMethod.GET)
-	public String remove(@ModelAttribute Long quadroId){
+	@RequestMapping(value="/protected/removeQuadro/{quadroId}", method = RequestMethod.GET)
+	public String remove(@PathVariable("quadroId") Long quadroId){
 		this.quadroService.removeById(quadroId);
-		return "/home";
+		return "/index";
 	}
 
 }
