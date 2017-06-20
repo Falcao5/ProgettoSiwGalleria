@@ -1,6 +1,6 @@
 package it.uniroma3.spring.repository;
 
-import java.awt.Dimension;
+
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -14,7 +14,5 @@ public interface QuadroRepository extends CrudRepository<Quadro, Long> {
 	List<Quadro> findByAnno(Integer anno);
 	
 	List<Quadro> findByTecnica(String tecnica);
-	
-//	List<Quadro> findByDimensioni(Dimension dimensioni);
 	
 }

@@ -12,11 +12,15 @@
 		<input type="submit" value="Login" name="login" />
 	</form>
 
-
-	<form action="#" th:action="@{/viewQuadro}" method="get">
-		<select th:field="*{quadro}">
-		</select>
-		<input type="submit" value="Cerca Quadro" />
+	<form action="#" th:action="@{/viewAutore}" id="viewAutore" th:object="${autore}" method="post">
+		<input type="submit" value="Cerca Autore" />
 	</form>
+	
+	<select form="viewAutore">
+		<option>Seleziona un autore</option>
+		<option th:each="autore : ${autori}" th:value="${autore.id}" th:text="${autore.nome + ' ' + autore.cognome}"></option>
+	</select>
+	
+	
 </body>
 </html>

@@ -5,20 +5,21 @@
 </head>
 
 <body>
-	<label>Titolo </label>
+	<label><strong>Titolo</strong></label>
 	<p th:text="${quadro.titolo}">Not found</p>
-	<label>Anno </label>
+	<label><strong>Anno </strong></label>
 	<p th:text="${quadro.anno}">Not found</p>
-	<label>Tecnica </label>
+	<label><strong>Tecnica</strong></label>
 	<p th:text="${quadro.tecnica}">Not found</p>
-	<label>Dimensioni </label>
-	<p th:text="${quadro.dimensioni.width + 'x' + quadro.dimensioni.height + ' cm'}">Not found</p>
-	<label>Autore </label>
-
-	<form action="#" th:action="@{/protected/createQuadro}" method="get">
-		<input type="submit" value="Aggiungi un altro quadro" />
-	</form>
+	<label><strong>Dimensioni</strong></label>
+	<p th:text="${quadro.larghezza + 'x' + quadro.altezza + ' cm'}">Not found</p>
+	<label><strong>Autore</strong></label>
+ 	<p th:text="${autore.nome + ' ' + autore.cognome}">Not found</p>
 	
+	<form action="#" th:action="@{/protected/createQuadro}" method="get">
+		<input type="submit" value="Aggiungi un quadro" />
+	</form>
+
 	
 	
 	<form action="#" th:action="@{'/protected/removeQuadro/' + ${quadro.id}}"  method="get">

@@ -6,19 +6,29 @@
 </head>
 
 <body>
-	<label>Nome: </label>
+	<label><strong>Nome</strong></label>
 	<p th:text="${autore.nome}">Not found</p>
-	<label>Cognome: </label>
+	<label><strong>Cognome</strong></label>
 	<p th:text="${autore.cognome}">Not found</p>
-	<label>Nazionalità: </label>
+	<label><strong>Nazionalità</strong></label>
 	<p th:text="${autore.nazionalita}">Not found</p>
-	<label>Data di nascita: </label>
-	<p th:text="${#dates.format(autore.dataDiNascita, 'dd/MM/yyyy')}">Not found</p>
-	<label>Data di morte: </label>
-	<p th:text="${#dates.format(autore.dataDiMorte, 'dd/MM/yyyy')}">Not found</p>
+	<label><strong>Data di nascita</strong></label>
+	
+ 	<p th:text="${#dates.format(autore.dataDiNascita, 'dd/MM/yyyy')}">Not found</p>
+	<label><strong>Data di morte</strong></label>
+	<p th:text="${#dates.format(autore.dataDiMorte, 'dd/MM/yyyy')}">Not found</p>	
 
+	
+	<form action="#" th:action="@{/viewQuadro}" th:object="${quadro}" method="post">
+		<select>
+			<option>Seleziona un quadro</option>
+			<option th:each="quadro : ${quadri}" th:value="${quadro.id}" th:text="${quadro.titolo}"></option>
+		</select>
+		<input type="submit" value="Cerca Quadro" />
+	</form>
+	
 	<form action="#" th:action="@{/protected/createAutore}" method="get">
-		<input type="submit" value="Aggiungi un altro autore" />
+		<input type="submit" value="Aggiungi un autore" />
 	</form>
 
 	<a href="/index"> <img src="/img/Homepage.png" /></a>

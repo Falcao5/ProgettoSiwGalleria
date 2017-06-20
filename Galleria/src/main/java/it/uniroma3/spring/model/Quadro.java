@@ -8,18 +8,14 @@
 
 package it.uniroma3.spring.model;
 
-import java.awt.Dimension;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
@@ -41,17 +37,20 @@ public class Quadro{
 	private String tecnica;
 
 	@Column(nullable=false)
-	private Dimension dimensioni;
+	private Integer larghezza;
 	
-	@ManyToOne
-	@JoinColumn
+	@Column(nullable=false)
+	private Integer altezza;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="AUTORE_ID")
 	private Autore autore;
 	
 	/**
 	 * Constructor without parameters
 	 */
 	public Quadro(){
-		this.dimensioni = new Dimension();
+
 	}
 	
 	/**
@@ -61,11 +60,12 @@ public class Quadro{
 	 * @param tecnica
 	 * @param dimensioni
 	 */
-	public Quadro(String titolo, Integer anno, String tecnica, Dimension dimensioni, Autore autore) {
+	public Quadro(String titolo, Integer anno, String tecnica, Integer larghezza, Integer altezza, Autore autore) {
 		this.titolo = titolo;
 		this.anno = anno;
 		this.tecnica = tecnica;
-		this.dimensioni = dimensioni;
+		this.altezza= altezza;
+		this.larghezza=larghezza;
 		this.autore = autore;
 	}
 
@@ -124,21 +124,35 @@ public class Quadro{
 	public void setTecnica(String tecnica) {
 		this.tecnica = tecnica;
 	}
-
-	/**
-	 * @return the dimensioni
-	 */
-	public Dimension getDimensioni() {
-		return dimensioni;
-	}
-
-	/**
-	 * @param dimensioni the dimensioni to set
-	 */
-	public void setDimensioni(Dimension dimensioni) {
-		this.dimensioni = dimensioni;
-	}
 	
+	/**
+	 * @return the larghezza
+	 */
+	public Integer getLarghezza() {
+		return larghezza;
+	}
+
+	/**
+	 * @param larghezza the larghezza to set
+	 */
+	public void setLarghezza(Integer larghezza) {
+		this.larghezza = larghezza;
+	}
+
+	/**
+	 * @return the altezza
+	 */
+	public Integer getAltezza() {
+		return altezza;
+	}
+
+	/**
+	 * @param altezza the altezza to set
+	 */
+	public void setAltezza(Integer altezza) {
+		this.altezza = altezza;
+	}
+
 	/**
 	 * @return the autore
 	 */
@@ -156,5 +170,66 @@ public class Quadro{
 	@Override
 	public String toString() {
 		return this.id + "";
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((anno == null) ? 0 : anno.hashCode());
+		result = prime * result + ((autore == null) ? 0 : autore.hashCode());
+		result = prime * result + ((larghezza == null) ? 0 : larghezza.hashCode());
+		result = prime * result + ((altezza == null) ? 0 : altezza.hashCode());
+		result = prime * result + ((tecnica == null) ? 0 : tecnica.hashCode());
+		result = prime * result + ((titolo == null) ? 0 : titolo.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Quadro other = (Quadro) obj;
+		if (anno == null) {
+			if (other.anno != null)
+				return false;
+		} else if (!anno.equals(other.anno))
+			return false;
+		if (autore == null) {
+			if (other.autore != null)
+				return false;
+		} else if (!autore.equals(other.autore))
+			return false;
+		if (larghezza == null) {
+			if (other.larghezza != null)
+				return false;
+		} else if (!larghezza.equals(other.larghezza))
+			return false;
+		if (altezza == null) {
+			if (other.altezza != null)
+				return false;
+		} else if (!altezza.equals(other.altezza))
+			return false;
+		if (tecnica == null) {
+			if (other.tecnica != null)
+				return false;
+		} else if (!tecnica.equals(other.tecnica))
+			return false;
+		if (titolo == null) {
+			if (other.titolo != null)
+				return false;
+		} else if (!titolo.equals(other.titolo))
+			return false;
+		return true;
 	}
 }

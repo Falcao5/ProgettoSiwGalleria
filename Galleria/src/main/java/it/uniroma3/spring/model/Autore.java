@@ -13,8 +13,10 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,12 +25,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="autori")
 public class Autore {
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="AUTORE_ID")
 	private Long id;
 	
 	@Column(nullable=false, length=50)
@@ -42,13 +47,16 @@ public class Autore {
 
 	@Column(nullable=false)
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataDiNascita;
 
 	@Column(nullable=false)
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataDiMorte;
 	
-	@OneToMany(mappedBy="autore")
+	@OneToMany(mappedBy="autore", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
+	
 	private List<Quadro> quadri;
 	
 	/**
@@ -64,6 +72,7 @@ public class Autore {
 		this.nazionalita = nazionalita;
 		this.dataDiNascita = dataDiNascita;
 		this.dataDiMorte = dataDiMorte;
+		this.quadri = new LinkedList<>();
 	}
 	
 	public Autore(){
@@ -154,9 +163,78 @@ public class Autore {
 		this.dataDiMorte = dataDiMorte;
 	}
 	
+	/**
+	 * @return the quadri
+	 */
+	public List<Quadro> getQuadri() {
+		return quadri;
+	}
+
+	/**
+	 * @param quadri the quadri to set
+	 */
+	public void setQuadri(List<Quadro> quadri) {
+		this.quadri = quadri;
+	}
+
 	@Override
 	public String toString() {
 		return this.id + "";
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
+		result = prime * result + ((dataDiMorte == null) ? 0 : dataDiMorte.hashCode());
+		result = prime * result + ((dataDiNascita == null) ? 0 : dataDiNascita.hashCode());
+		result = prime * result + ((nazionalita == null) ? 0 : nazionalita.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Autore other = (Autore) obj;
+		if (cognome == null) {
+			if (other.cognome != null)
+				return false;
+		} else if (!cognome.equals(other.cognome))
+			return false;
+		if (dataDiMorte == null) {
+			if (other.dataDiMorte != null)
+				return false;
+		} else if (!dataDiMorte.equals(other.dataDiMorte))
+			return false;
+		if (dataDiNascita == null) {
+			if (other.dataDiNascita != null)
+				return false;
+		} else if (!dataDiNascita.equals(other.dataDiNascita))
+			return false;
+		if (nazionalita == null) {
+			if (other.nazionalita != null)
+				return false;
+		} else if (!nazionalita.equals(other.nazionalita))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
 	}
 
 }
