@@ -4,42 +4,52 @@ UC1: Un amministratore inserisce un autore.
 Caso di successo dello scenario principale. Attore: Amministratore
 
 1. Un amministratore sceglie di eseguire il login.
-2. L'amministratore esegue il login. 
-3. Il Sistema mostra una vista contenente le possibili azioni protette da login.
-4. L'amministratore sceglie l'azione di inserimento di un autore.
-5. L'amministratore inserisce i dati relativi all'autore. In particolare sono di interesse: nome, cognome, nazionalità, data di nascita e data di morte.
-6. L'amministratore conferma l'inserimento del autore.
-7. Il Sistema mostra una vista con un riepilogo dell'autore inserito, e la possibilità di scegliere tra un nuovo inserimento di un autore, oppure di tornare alla vista contenente le possibili azioni protette da login.
+2. L'amministratore esegue il login inserendo come username "admin" e password "pass". 
+3. Il Sistema mostra una vista che è protetta da autecazione. Si può accedere a questa vista solo previa autenticazione.
+4. L'amministratore sceglie di tornare alla vista "index".
+5. L'amministratore sceglie di creare un autore.
+6. Il Sistema mostra una vista con una form per raccogliere i dati dell'autore.
+7. L'amministratore inserisce i dati relativi all'autore. In particolare sono di interesse: nome, cognome, nazionalità, data di nascita e data di morte.
+8. L'amministratore conferma l'inserimento dell'autore.
+9. Il Sistema registra l'autore inserito.
+10. Il Sistema mostra una vista con un riepilogo dell'autore inserito.
+
 
 UC2: Un amministratore inserisce un quadro.
 Caso di successo dello scenario principale. Attore: Amministratore
 
 1. Un amministratore sceglie di eseguire il login.
-2. L'amministratore esegue il login. 
-3. Il Sistema mostra una vista contenente le possibili azioni protette da login.
-4. L'amministratore sceglie l'azione di inserimento di un quadro.
-5. L'amministratore inserisce i dati relativi al quadro. In particolare sono di interesse: titolo, anno, tecnica, dimensioni e autore.
-6. L'amministratore conferma l'inserimento del quadro.
-7. Il Sistema mostra una vista con un riepilogo del quadro inserito, e la possibilità di scegliere tra un nuovo inserimento di un quadro, oppure di tornare alla vista contenente le possibili azioni protette da login.
+2. L'amministratore esegue il login inserendo come username "admin" e password "pass". 
+3. Il Sistema mostra una vista che è protetta da autecazione. Si può accedere a questa vista solo previa autenticazione.
+4. L'amministratore sceglie di tornare alla vista "index".
+5. L'amministratore sceglie di creare un un quadro.
+6. Il Sistema mostra una vista con una form per raccogliere i dati del quadro.
+7. L'amministratore inserisce i dati relativi al quadro. In particolare sono di interesse: titolo, anno, tecnica, larghezza, altezza, autore.
+8. L'amministratore conferma l'inserimento del quadro.
+9. Il Sistema registra il quadro inserito.
+10. Il Sistema mostra una vista con un riepilogo del quadro inserito.
 
 
-UC3: Un amministratore elimina un quadro.
+UC3: Un utente cerca un quadro.
+Caso di successo dello scenario principale. Attore: Utente
+
+1. Un utente seleziona, tra le opzioni del menu a tendina, l'autore da cercare.
+2. L'utente conferma la ricerca dell'autore selezionato.
+3. Il Sistema mostra una vista con il riepilogo dell'autore selezionato, e un menu a tendina per scegliere quale dei quadri, dell'autore selezionato, visualizzare.
+4. L'utente seleziona un quadro.
+5. Il Sistema mostra una vista con il riepilogo di tutti i dati del quadro selezionato.
+
+
+UC4: Un amministratore elimina un quadro.
 Caso di successo dello scenario principale. Attore: Amministratore
 
 1. Un amministratore sceglie di eseguire il login.
-2. L'amministratore esegue il login. 
-4. Il Sistema mostra una vista contenente le possibili azioni protette da login.
-4. L'amministratore sceglie l'azione di cercare un quadro.
-5. L'amministratore sceglie un quadro tra quelli proposti.
-6. Il Sistema mostra una vista con un riepilogo del quadro scelto e la possibilità di rimuovere lo stesso.
-7. L'amminisratore sceglie di rimuovere il quadro.
-8. Il Sistema torna alla vista iniziale.
-
-
-UC4: Un utente cerca un quadro.
-Caso di successo dello scenario principale. Attore: Utente
-
-1. Un utente sceglie di cercare un quadro.
-2. L'utente inserisce il titolo del quadro.
-3. L'utente sceglie il quadro tra i quelli proposti.
-3. Il Sistema mostra una vista contenente un riepilogo dei dati relativi al quadro, e la possibilità di scegliere tra una nuova ricerca oppure tornare alla vista principale.
+2. L'amministratore esegue il login inserendo come username "admin" e password "pass".
+3. Il Sistema mostra una vista che è protetta da autecazione. Si può accedere a questa vista solo previa autenticazione.
+4. L'amministratore sceglie di tornare alla vista "index".
+5. L'amministratore seleziona, tra le opzioni del menu a tendina, l'autore da cercare.
+6. L'amministratore conferma la ricerca dell'autore selezionato.
+7. Il Sistema mostra una vista con il riepilogo dell'autore selezionato, e un menu a tendina per scegliere quale dei quadri, dell'autore selezionato, visualizzare.
+8. L'amministratore seleziona un quadro.
+9. Il Sistema mostra una vista con il riepilogo di tutti i dati del quadro selezionato.
+10. L'amministratore sceglie l'azione di eliminare il quadro che sta visualizzando.

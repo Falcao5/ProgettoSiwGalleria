@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.springframework.org/security/tags">
 
 <head>
 <title>Homepage</title>
@@ -21,6 +21,13 @@
 		<option th:each="autore : ${autori}" th:value="${autore.id}" th:text="${autore.nome + ' ' + autore.cognome}"></option>
 	</select>
 	
+	<form action="#" th:action="@{/protected/createQuadro}"  method="get">
+		<input type="submit" value="Crea quadro"  sec:authorize="isAuthenticated()"/>
+	</form>
+	
+	<form action="#" th:action="@{/protected/createAutore}"  method="get">
+		<input type="submit" value="Crea autore"  sec:authorize="isAuthenticated()"/>
+	</form>
 	
 </body>
 </html>

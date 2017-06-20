@@ -13,8 +13,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value="/protected/autenticato")
-	public String loggedIn(){
-		
+	public String loggedIn(){		
 		return "autenticato";
 	}
 }

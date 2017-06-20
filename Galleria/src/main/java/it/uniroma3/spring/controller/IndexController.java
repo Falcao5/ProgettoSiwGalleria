@@ -18,11 +18,9 @@ public class IndexController {
 	private AutoreService autoreService;
 
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-	public String goHomeGet(Model model){
-		
+	public String goHomeGet(Model model){		
 		List<Autore> autori = (List<Autore>)autoreService.findAll();
-		model.addAttribute("autori", autori);
-		
+		model.addAttribute("autori", autori);		
 		return "/index";
 	}
 

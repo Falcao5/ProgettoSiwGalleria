@@ -33,9 +33,7 @@ public class AutoreController {
 	@RequestMapping(value = "/viewAutore", method = RequestMethod.POST)
 	public String viewAutore(Model model, @ModelAttribute Autore autore){
 		List<Quadro> quadriDalDb = (List<Quadro>)quadroService.findAll();
-		
 		List<Quadro> quadri = new LinkedList<>();
-		
 		for(Quadro q : quadriDalDb){
 			if(q.getAutore().equals(autore))
 				quadri.add(q);
@@ -44,11 +42,13 @@ public class AutoreController {
 		if(autore!=null){
 			System.out.println(autore.getNome());
 			System.out.println(autore.getCognome());
+			System.out.println(autore.getNazionalita());
+			System.out.println(autore.getDataDiNascita());
+			System.out.println(autore.getDataDiMorte());
 		}
 		
 		model.addAttribute(autore);
 		model.addAttribute(quadri);
-		
 		return "/viewAutore";
 	}
 	
@@ -60,12 +60,9 @@ public class AutoreController {
 
 	@Transactional
 	@RequestMapping(value = "/protected/createAutore", method = RequestMethod.POST)
-	public String create(Model model, @ModelAttribute Autore autore) {
-		
-		this.autoreService.add(autore);
-		
+	public String create(Model model, @ModelAttribute Autore autore) {		
+		this.autoreService.add(autore);		
 		model.addAttribute(autore);
-		
 		return "/viewAutore";
 	}
 

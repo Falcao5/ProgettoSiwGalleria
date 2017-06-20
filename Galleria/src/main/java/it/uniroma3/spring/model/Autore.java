@@ -55,9 +55,8 @@ public class Autore {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataDiMorte;
 	
-	@OneToMany(mappedBy="autore", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	
-	private List<Quadro> quadri;
+	@OneToMany(mappedBy="autore", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)	
+	private List<Quadro> quadriAutore;
 	
 	/**
 	 * @param nome
@@ -72,11 +71,11 @@ public class Autore {
 		this.nazionalita = nazionalita;
 		this.dataDiNascita = dataDiNascita;
 		this.dataDiMorte = dataDiMorte;
-		this.quadri = new LinkedList<>();
+		this.quadriAutore = new LinkedList<>();
 	}
 	
 	public Autore(){
-		this.quadri = new LinkedList<>();
+		this.quadriAutore = new LinkedList<>();
 	}
 	
 	/**
@@ -166,15 +165,15 @@ public class Autore {
 	/**
 	 * @return the quadri
 	 */
-	public List<Quadro> getQuadri() {
-		return quadri;
+	public List<Quadro> getQuadriAutore() {
+		return quadriAutore;
 	}
 
 	/**
 	 * @param quadri the quadri to set
 	 */
-	public void setQuadri(List<Quadro> quadri) {
-		this.quadri = quadri;
+	public void setQuadriAutore(List<Quadro> quadri) {
+		this.quadriAutore = quadri;
 	}
 
 	@Override

@@ -33,14 +33,10 @@ public class QuadroController {
 	
 	@RequestMapping(value = "/viewQuadro", method = RequestMethod.POST)
 	public ModelAndView viewQuadro(@ModelAttribute Quadro quadro){
-		ModelAndView mav = new ModelAndView();
-		
+		ModelAndView mav = new ModelAndView();		
 		mav.getModel().put("quadro", quadro);
-		
-		mav.getModel().put("autore", quadro.getAutore());
-		
-		mav.setViewName("/viewQuadro");
-		
+		mav.getModel().put("autore", quadro.getAutore());		
+		mav.setViewName("/viewQuadro");		
 		return mav;
 	}
 	
@@ -50,25 +46,19 @@ public class QuadroController {
 		Quadro quadro = new Quadro();
 		model.addAttribute("quadro", quadro);
 		Iterable<Autore> autori = autoreService.findAll();
-		model.addAttribute("autori", autori);
-		
+		model.addAttribute("autori", autori);		
 		return "/createQuadro";
 	}
 	
 	@Transactional
 	@RequestMapping(value = "/protected/createQuadro", method = RequestMethod.POST)
 	public ModelAndView createQuadroPost(@ModelAttribute Quadro quadro, @ModelAttribute Autore autore) {
-		ModelAndView mav = new ModelAndView();
-		
-		this.quadroService.add(quadro);
-		
+		ModelAndView mav = new ModelAndView();		
+		this.quadroService.add(quadro);		
 		Map<String,Object> mMap = mav.getModel();
 		mMap.put("quadro", quadro);
-		
-		mMap.put("autore", autore);
-		
-		mav.setViewName("/viewQuadro");
-		
+		mMap.put("autore", autore);		
+		mav.setViewName("/viewQuadro");		
 		return mav;
 	}
 	

@@ -13,7 +13,6 @@
 	<label><strong>Nazionalità</strong></label>
 	<p th:text="${autore.nazionalita}">Not found</p>
 	<label><strong>Data di nascita</strong></label>
-	
  	<p th:text="${#dates.format(autore.dataDiNascita, 'dd/MM/yyyy')}">Not found</p>
 	<label><strong>Data di morte</strong></label>
 	<p th:text="${#dates.format(autore.dataDiMorte, 'dd/MM/yyyy')}">Not found</p>	

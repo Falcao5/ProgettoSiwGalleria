@@ -43,7 +43,7 @@ public class Quadro{
 	private Integer altezza;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="AUTORE_ID")
+	@JoinColumn(name="AUTORE_ID", nullable=false)
 	private Autore autore;
 	
 	/**
